@@ -1,0 +1,30 @@
+{
+  "name": "news-app",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://Maksym-Babich.github.io/News-app",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /News-app/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maksym-Babich/News-app.git"
+  },
+  "keywords": [],
+  "author": "Team-8",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maksym-Babich/News-app/issues"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
