@@ -34,7 +34,9 @@ export default class API {
             <span class="weather-info__description">${
               response.weather[0].main
             }</span>
-            <span class="weather-info__location">${response.name}</span>
+            <span class="weather-info__location"><svg>
+    <use href="../images/sprite.svg#location"></use>
+</svg>${response.name}</span>
         </div>
         
       </div>

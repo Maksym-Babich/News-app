@@ -54,6 +54,12 @@
     gap: 8px;
     background: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
+
+    &>svg {
+        width: 15px;
+        height: 15px;
+        color: black;
+    }
 }
 
 .weather>img {
