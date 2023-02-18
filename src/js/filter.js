@@ -1,6 +1,6 @@
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw'; 
 
-async function getCategoryList() {
+export default async function getCategoryList() {
   const fetchApi = await fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${KEY}`);
   const response = await fetchApi.json();
   const  categoriesAray  = response.results;
