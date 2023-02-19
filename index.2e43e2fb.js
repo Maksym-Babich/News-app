@@ -1,2 +1,0 @@
-async function n(){const n=await fetch("https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw");return(await n.json()).results}!async function(){let t=0;window.innerWidth<768&&n().then((n=>{renderMarkupFilter(n,t)}));window.innerWidth>=768&&window.innerWidth<1280&&(t=4,n().then((n=>{renderMarkupFilter(n,t)})));window.innerWidth>=1280&&(t=6,n().then((n=>{renderMarkupFilter(n,t)})))}();
-//# sourceMappingURL=index.2e43e2fb.js.map
