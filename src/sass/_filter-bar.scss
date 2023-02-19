@@ -14,9 +14,6 @@
   justify-content: center;
   align-items: center;
   padding: 8px 23px;
-  gap: 40px;
-  border: 1px solid #4440F7;
-  border-radius: 20px;
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 400;
@@ -24,16 +21,16 @@
   line-height: 16px;
   text-align: center;
   color: #4440F7;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #4440F7;
+  color: #fff;
 }
 
 .show-more {
   position: relative;
-}
-
-.show-more_icon {
-  width: 8px;
-  height: 14px;
-  fill: aquamarine;
 }
 
 
@@ -47,6 +44,7 @@
   line-height: 16px;
   text-align: center;
 }
+
 
 .show-more__categories {
   display: none;
@@ -94,4 +92,10 @@
   text-align: start;
   letter-spacing: 0.01em;
   color: #4440F7;
+  cursor: pointer;
+}
+
+.btn.active {
+  background-color: $second-active-color;
+  color: $white-color;
 }
