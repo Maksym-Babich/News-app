@@ -4,11 +4,26 @@ export default async function getCategoryList() {
   const fetchApi = await fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${KEY}`);
   const response = await fetchApi.json();
   const  categoriesAray  = response.results;
-
-//лишаю console.log щоб можна було подивитись що приходить в результаті роботи функції
- console.log(categoriesAray);    
-
-return categoriesAray;
+  
+    return categoriesAray;
 }
-// лишаю виклик фунції щоб було видно як вона працює
-getCategoryList()
+
+renderCategoryList()
+
+async function renderCategoryList() {
+    let quantityButton = 0;
+    // мобілка
+    if (window.innerWidth < 768) {
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton)})
+    }
+    // планшет
+     if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+         quantityButton = 4;
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton) })
+    }
+    // десктоп 
+    if (window.innerWidth >= 1280) {
+        quantityButton = 6;
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton)})
+    }
+}
