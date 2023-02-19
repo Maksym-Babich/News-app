@@ -4,7 +4,6 @@ import NEVS_API from './news-api';
 
 const api = new API();
 const newsApi = new NEVS_API();
-gjns;
 newsApi.fetch().then(response => {
   newsApi.createMarkup(response);
 });
