@@ -1,13 +1,8 @@
-
 import { format } from 'date-fns';
 import { textHiding } from './news-text-hiding';
-
-const getMarkupV3 = newsArr => {
-
-import { textHiding } from './news-text-hiding';
+export { getMarkupV3, getMarkupV2 };
 
 const getMarkup = newsArr => {
-
   const markup = newsArr.map(newsItem => {
     const { url, id, published_date, section, title, abstract, media } =
       newsItem;
@@ -95,5 +90,3 @@ const getMarkupV2 = newsArr => {
   });
   return markup;
 };
-
-export { getMarkupV3, getMarkupV2 };
