@@ -1,4 +1,5 @@
 import './filter';
+
 import WEATHER_API from './weather-api';
 import NEwS_API from './news-api';
 
@@ -23,3 +24,6 @@ async function onLocationSuccess(pos) {
 function onLocationError() {
   weatherApi.standartFetch().then(response => weatherApi.createMarkup(response));
 }
+
+import './news-text-hiding';
+
