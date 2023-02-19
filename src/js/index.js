@@ -1,10 +1,10 @@
 import './filter';
 import WEATHER_API from './weather-api';
-import NEwS_API from './news-api';
+import NEWS_API from './news-api';
 
 const weatherApi = new WEATHER_API();
-const newsApi = new NEwS_API();
-let query = document.querySelector('input')
+const newsApi = new NEWS_API();
+let query = document.querySelector('search-field')
 
 newsApi.fetchNewsByQuerry(query).then(response => {
   newsApi.createMarkup(response);
