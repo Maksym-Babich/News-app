@@ -11,6 +11,14 @@
 .date-wrapper {
   padding-bottom: 12px;
   border-bottom: 1px solid #929292;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: 480px) {
+    margin-bottom: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 40px;
+  }
 }
 
 .date-of-read {
@@ -25,4 +33,18 @@
   background-color: transparent;
   display: flex;
   align-items: baseline;
+}
+
+.read-cards-container {
+  margin-bottom: 40px;
+  @media screen and (min-width: 480px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 48px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 32px;
+    margin-bottom: 60px;
+  }
 }
