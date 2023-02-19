@@ -76,15 +76,6 @@ function onClickSection() {
       }
       button.classList.add('active');
       activeButton = button;
-      buttons.forEach(btn => {
-        if (btn === activeButton) {
-          btn.style.backgroundColor = '#4440F6';
-          btn.style.color = '#fff';
-        } else {
-          btn.style.backgroundColor = '';
-          btn.style.color = '#4440F6 ';
-        }
-      });
     });
   });
 }
