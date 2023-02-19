@@ -3,3 +3,48 @@
 @import './header';
 @import './card';
 @import './footer';
+
+.date-container {
+  margin-top: 40px;
+}
+
+.date-wrapper {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #929292;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: 480px) {
+    margin-bottom: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 40px;
+  }
+}
+
+.date-of-read {
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+  margin-right: 7px;
+}
+
+.hide-button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: baseline;
+}
+
+.read-cards-container {
+  margin-bottom: 40px;
+  @media screen and (min-width: 480px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 48px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+}
