@@ -11,19 +11,19 @@ export default async function getCategoryList() {
 renderCategoryList()
 
 async function renderCategoryList() {
-    let quantityButton = 0;
+    let buttonsQuantity = 0;
     // мобілка
     if (window.innerWidth < 768) {
-        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton)})
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, buttonsQuantity)})
     }
     // планшет
      if (window.innerWidth >= 768 && window.innerWidth < 1280) {
          quantityButton = 4;
-        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton) })
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, buttonsQuantity) })
     }
     // десктоп 
     if (window.innerWidth >= 1280) {
         quantityButton = 6;
-        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, quantityButton)})
+        getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, buttonsQuantity)})
     }
 }
