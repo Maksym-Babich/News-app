@@ -1,20 +1,18 @@
 
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw'; 
 
-export default class NEVS_API {
-    constructor() {
-this.value = ''
-    }
+export default class NEwS_API {
+ 
 
-    async fetch() {
-       const fetchNews = await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.value}&api-key=${KEY}
+    async fetchNewsByQuerry(query) {
+       const response = await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${KEY}
 `)
-        const response = fetchNews.json()
-        return response
+        const arrayOfNews = response.json()
+        return arrayOfNews
         
     }
-    async createMarkup(response) {
-        console.log(response)
+    async createMarkup(arrayOfNews) {
+        console.log(arrayOfNews)
     }
 }
 

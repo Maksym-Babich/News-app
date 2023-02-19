@@ -1,22 +1,25 @@
 import './filter';
-import API from './weather-api';
-import NEVS_API from './news-api';
+import WEATHER_API from './weather-api';
+import NEwS_API from './news-api';
 
-const api = new API();
-const newsApi = new NEVS_API();
-newsApi.fetch().then(response => {
+const weatherApi = new WEATHER_API();
+const newsApi = new NEwS_API();
+let query = document.querySelector('input')
+
+newsApi.fetchNewsByQuerry(query).then(response => {
   newsApi.createMarkup(response);
 });
 
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
+
 async function onLocationSuccess(pos) {
   this.latitude = pos.coords.latitude;
   this.longitude = pos.coords.longitude;
 
-  return api.fetchWidthLocation().then(response => {
-    return api.createMarkup(response);
+  return weatherApi.fetchWidthLocation().then(response => {
+    weatherApi.createMarkup(response);
   });
 }
 function onLocationError() {
-  api.standartFetch().then(response => api.createMarkup(response));
+  weatherApi.standartFetch().then(response => weatherApi.createMarkup(response));
 }
