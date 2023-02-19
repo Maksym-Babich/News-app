@@ -1,2 +1,2 @@
 import './filter';
-import './news-description-hiding';
+import './news-text-hiding';
