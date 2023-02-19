@@ -1,0 +1,131 @@
+@media screen and (min-width: $phone) {
+  .news-card {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px 30px;
+    }
+    &__item {
+      width: 288px;
+      height: 630px;
+      color: $main-text-color;
+    }
+    &__img-wrapper {
+      width: 288px;
+      height: 395px;
+      position: relative;
+      font-size: 12px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    &__category {
+      position: absolute;
+      top: 40px;
+      background-color: $second-active-color-opacity;
+      color: $white-color;
+      padding: 4px 14px;
+      border-radius: 0px 4px 4px 0px;
+    }
+    &__btn-favorite {
+      position: absolute;
+      right: 8px;
+      bottom: 12px;
+      border-radius: 20px;
+      background-color: $white-color;
+      border: none;
+      padding: 6px 32px 6px 12px;
+      display: flex;
+    }
+
+    &__btn-icon {
+      height: 16px;
+      width: 16px;
+    }
+    &__text {
+      margin-bottom: 20px;
+    }
+    &__title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.4;
+      height: 100px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    &__description {
+      font-size: 14px;
+      line-height: 1.4;
+      height: 57px;
+      overflow: hidden;
+    }
+    &__info {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      line-height: 1.3;
+    }
+    &__date {
+      color: $secondary-text-color;
+    }
+    &__read-more {
+      color: $second-active-color;
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .news-card {
+    &__list {
+      justify-content: start;
+    }
+    &__item {
+      width: 353px;
+      height: 675px;
+    }
+    &__img-wrapper {
+      width: 353px;
+    }
+    &__btn-favorite {
+      right: 12px;
+    }
+    &__title {
+      font-size: 32px;
+      height: 132px;
+    }
+    &__description {
+      font-size: 16px;
+      height: 66px;
+    }
+    &__info {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .news-card {
+    &__item {
+      width: 395px;
+    }
+    &__img-wrapper {
+      width: 395px;
+    }
+    &__title {
+      font-size: 32px;
+    }
+    &__description {
+      font-size: 16px;
+    }
+    &__info {
+      font-size: 16px;
+    }
+  }
+}
