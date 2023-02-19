@@ -1,7 +1,13 @@
+
 import { format } from 'date-fns';
 import { textHiding } from './news-text-hiding';
 
 const getMarkupV3 = newsArr => {
+
+import { textHiding } from './news-text-hiding';
+
+const getMarkup = newsArr => {
+
   const markup = newsArr.map(newsItem => {
     const { url, id, published_date, section, title, abstract, media } =
       newsItem;
@@ -23,8 +29,13 @@ const getMarkupV3 = newsArr => {
             </div>
         </div>
         <div class="news-card__text">
+feature/news-cards-markup
           <h2 class="news-card__title">${textHiding(title, 30)}</h2>
           <p class="news-card__description">${textHiding(abstract, 65)}</p>
+
+          <h2 class="news-card__title">${textHiding(title, 65)}</h2>
+          <p class="news-card__description">${textHiding(abstract, 120)}</p>
+ main
         </div>
         <div class="news-card__info">
           <span class="news-card__date">${published_date.replaceAll(
