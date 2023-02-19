@@ -3,3 +3,26 @@
 @import './header';
 @import './card';
 @import './footer';
+
+.date-container {
+  margin-top: 40px;
+}
+
+.date-wrapper {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #929292;
+}
+
+.date-of-read {
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+  margin-right: 7px;
+}
+
+.hide-button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: baseline;
+}
