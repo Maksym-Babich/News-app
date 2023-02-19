@@ -1,11 +1,12 @@
 import './filter';
+import './markup';
 
 import WEATHER_API from './weather-api';
 import NEwS_API from './news-api';
 
 const weatherApi = new WEATHER_API();
 const newsApi = new NEwS_API();
-let query = document.querySelector('input')
+let query = document.querySelector('input');
 
 newsApi.fetchNewsByQuerry(query).then(response => {
   newsApi.createMarkup(response);
@@ -22,8 +23,9 @@ async function onLocationSuccess(pos) {
   });
 }
 function onLocationError() {
-  weatherApi.standartFetch().then(response => weatherApi.createMarkup(response));
+  weatherApi
+    .standartFetch()
+    .then(response => weatherApi.createMarkup(response));
 }
 
 import './news-text-hiding';
-

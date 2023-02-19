@@ -5,3 +5,5 @@ export default function textHiding(text, textLength) {
     return newText.substring(0, lastSpace) + '...';
   }
 }
+
+export { textHiding };
