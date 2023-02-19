@@ -1,0 +1,20 @@
+.filter__list {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.filter__item {
+  padding-top: 7.5px;
+  padding-right: 13px;
+  padding-bottom: 7.5px;
+  padding-left: 13px;
+  border-radius: 20px;
+  border: 1px solid $active-color;
+  color: $second-active-color;
+}
+
