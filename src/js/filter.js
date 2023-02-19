@@ -18,12 +18,12 @@ async function renderCategoryList() {
     }
     // планшет
      if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-         quantityButton = 4;
+         buttonsQuantity = 4;
         getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, buttonsQuantity) })
     }
     // десктоп 
     if (window.innerWidth >= 1280) {
-        quantityButton = 6;
+        buttonsQuantity = 6;
         getCategoryList().then(categoryList => { renderMarkupFilter(categoryList, buttonsQuantity)})
     }
 }
