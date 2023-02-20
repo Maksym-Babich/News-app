@@ -1,10 +1,11 @@
 import './filter';
 
+
 import WEATHER_API from './weather-api';
-import NEwS_API from './news-api';
+import NEWS_API from './news-api';
 
 const weatherApi = new WEATHER_API();
-const newsApi = new NEwS_API();
+const newsApi = new NEWS_API();
 let query = document.querySelector('input')
 
 newsApi.fetchNewsByQuerry(query).then(response => {
@@ -18,11 +19,11 @@ async function onLocationSuccess(pos) {
   this.longitude = pos.coords.longitude;
 
   return weatherApi.fetchWidthLocation().then(response => {
-    weatherApi.createMarkup(response);
+    weatherApi.createWeatherMarkup(response);
   });
 }
 function onLocationError() {
-  weatherApi.standartFetch().then(response => weatherApi.createMarkup(response));
+  weatherApi.standartFetch().then(response => weatherApi.createWeatherMarkup(response));
 }
 
 import './news-text-hiding';
