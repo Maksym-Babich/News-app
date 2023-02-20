@@ -11,8 +11,8 @@ export default class NEwS_API {
         return arrayOfNews
         
     }
-    async createMarkup(arrayOfNews) {
-        console.log(arrayOfNews)
+    async createNewsMarkup(arrayOfNews) {
+       getMarkup(arrayOfNews.response.docs)
     }
 }
 
