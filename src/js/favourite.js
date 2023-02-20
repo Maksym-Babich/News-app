@@ -1,3 +1,4 @@
+import './header';
 const KEY_FAV_NEWS = 'favorite-news';
 
 const newsList = document.querySelector('news-card__list');
