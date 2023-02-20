@@ -1,0 +1,59 @@
+<header class="header">
+  <div class="container header-wraper">
+    <a class="logo" href="/src/index.html">News</a>
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <li class="main-nav-item"><a href="/src/index.html">Home</a></li>
+        <li class="main-nav-item">
+          <a href="/src/favourite.html">Favorite</a>
+        </li>
+        <li class="main-nav-item"><a href="/src/read.html">Read</a></li>
+      </ul>
+    </nav>
+    <form class="search-bar">
+      <button class="submit-button" type="submit">
+        <svg width="20" height="20" aria-label="Search field button">
+          <use href="/src/images/sprite.svg#search" class="search-button"></use>
+        </svg>
+      </button>
+      <input
+        class="search-field"
+        autocomplete="off"
+        type="text"
+        placeholder="Search"
+      />
+    </form>
+    <div class="buttons-wraper">
+      <button class="open-search-button" type="button">
+        <svg width="20" height="20" aria-label="Search field button">
+          <use href="/src/images/sprite.svg#search" class="search-button"></use>
+        </svg>
+      </button>
+      <button
+        class="open-menu-button js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        type="button"
+      >
+        <svg width="24" height="24" aria-label="Mobile menu button">
+          <use
+            href="/src/images/sprite.svg#burger"
+            class="menu-button__icon-menu"
+          ></use>
+        </svg>
+      </button>
+    </div>
+    <div class="desktop-switcher switcher">
+      <svg width="21" height="21" aria-label="Sun">
+        <use href="/src/images/sprite.svg#sun" class="mobile-menu-icon"></use>
+      </svg>
+      <label class="switch">
+        <input class="checkbox" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <svg width="21" height="21" aria-label="Moon">
+        <use href="/src/images/sprite.svg#moon" class="mobile-menu-icon"></use>
+      </svg>
+    </div>
+  </div>
+</header>
