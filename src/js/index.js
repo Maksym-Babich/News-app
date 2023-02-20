@@ -1,3 +1,6 @@
+
+import './header';
+
 import './filter';
 import './markup';
 
@@ -29,3 +32,4 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
+
