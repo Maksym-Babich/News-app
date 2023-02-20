@@ -19,8 +19,8 @@ export default class WEATHER_API {
     );
     return response.json();
   }
-  async createMarkup(response) {
-    container.innerHTML = `
+  async createWeatherMarkup(response) {
+    const weatherMarkup = `
    <div class="weather-info">
        <span class="weather-info__degrees">${Math.floor(
          response.main.temp
@@ -41,5 +41,7 @@ export default class WEATHER_API {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a>`;
+    
+      return weatherMarkup
   }
 }
