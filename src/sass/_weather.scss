@@ -19,6 +19,7 @@
     background: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
   }
+
 }
 
 .weather-info {
@@ -64,6 +65,53 @@
 }
 
 .weather>img {
+
+  &-info {
+    margin-top: 40px;
+    margin-bottom: 90px;
+    display: flex;
+
+    align-items: center;
+  }
+}
+
+.weather-info__degrees {
+  padding: 8px;
+  color: $white-color;
+  font-size: 64px;
+  border-right: 1px solid $white-color;
+}
+
+.weather-info__description {
+  font-size: 36px;
+  color: $white-color;
+}
+
+.weather-info__group {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.weather-info__location {
+  color: $white-color;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  background: rgba(254, 254, 255, 0.3);
+  border-radius: 10px;
+
+  & > svg {
+    width: 15px;
+    height: 15px;
+    color: black;
+  }
+}
+
+.weather > img {
+
   width: 200px;
   height: 200px;
 
