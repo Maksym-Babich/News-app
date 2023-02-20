@@ -1,4 +1,3 @@
-
 import './header';
 
 import './filter';
@@ -18,8 +17,8 @@ newsApi.fetchNewsByQuerry(query).then(response => {
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
 
 async function onLocationSuccess(pos) {
-  this.latitude = pos.coords.latitude;
-  this.longitude = pos.coords.longitude;
+  weatherApi.latitude = pos.coords.latitude;
+  weatherApi.longitude = pos.coords.longitude;
 
   return weatherApi.fetchWidthLocation().then(response => {
     weatherApi.createMarkup(response);
@@ -32,4 +31,3 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
-
