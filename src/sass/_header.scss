@@ -31,7 +31,6 @@
         @media screen and (min-width: $tablet) {
             width: 215px;
         }
-
 }
 .search-field {
     background-color: transparent;
@@ -146,7 +145,7 @@
     height: 20px;
     margin: 0 10px;
 }
-.checkbox {
+.checkbox,  {
     opacity: 0;
     width: 0;
     height: 0;
@@ -197,3 +196,12 @@
     }
 }
 
+.dark {
+    background-color: $dt-main-bg-color;
+    color: $dt-main-text-color;
+    
+    .mobile-menu{
+        background-color: $dt-main-bg-color;
+        color: $dt-main-text-color;
+    }
+}

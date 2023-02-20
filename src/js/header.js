@@ -10,10 +10,8 @@ function closeMenu() {
 }
 function darkMode() {
   if (this.checked) {
-      console.log('this is dark mode'); //
       body.classList.add('dark');
   } else {
-      console.log('this is regular mode'); //
       body.classList.remove('dark');
   }
 }
