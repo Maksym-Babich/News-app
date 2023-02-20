@@ -15,7 +15,7 @@ export default class WEATHER_API {
   }
   async fetchWidthLocation() {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&units=metric&appid=${API_KEY}`
     );
     return response.json();
   }
