@@ -51,9 +51,9 @@ const searchedNewsMarkup = newsArr => {
       multimedia,
     } = newsItem;
     let urlMedia = 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg';
-    if (multimedia.length) {
-      urlMedia = multimedia[0].url;
-    }
+    // if (multimedia.length) {
+    //   urlMedia = multimedia[0].url;
+    // }
     return `
     <li class="news-card__item" id=${_id}>
       <article class="news-card__article">
@@ -68,14 +68,11 @@ const searchedNewsMarkup = newsArr => {
             </div>
         </div>
         <div class="news-card__text">
-          <h2 class="news-card__title">${textHiding(headline.main, 30)}</h2>
-          <p class="news-card__description">${textHiding(abstract, 65)}</p>
+
+          <p class="news-card__description">${textHiding([abstract], 65)}</p>
         </div>
         <div class="news-card__info">
-          <span class="news-card__date">${format(
-            new Date(pub_date),
-            'dd/MM/yyyy'
-          )}</span>
+
           <a class="news-card__read-more" href=${web_url}>Read more</a>
         </div>
       </article>
@@ -86,3 +83,10 @@ const searchedNewsMarkup = newsArr => {
 };
 
 export { searchedNewsMarkup, popularNewsMarkup };
+
+/* <h2 class="news-card__title">${textHiding(headline.main, 30)}</h2> */
+
+// <span class="news-card__date">${format(
+//   new Date(pub_date),
+//   'dd/MM/yyyy'
+// )}</span>
