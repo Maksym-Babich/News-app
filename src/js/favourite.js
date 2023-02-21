@@ -1,7 +1,7 @@
 import './header';
 const KEY_FAV_NEWS = 'favorite-news';
 
-const newsList = document.querySelector('news-card__list');
+const newsList = document.querySelector('.news-card__list');
 newsList.addEventListener('click', onFavoriteBtnClick);
 
 // функції для роботи з local storage
