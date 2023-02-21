@@ -29,7 +29,6 @@ function onFavoriteBtnClick(e) {
   if (!favBtn) return;
 
   // перемикає додатковий клас
-  favBtn.classList.toggle('remove-from-fav');
 
   let currentStorageState = load(KEY_FAV_NEWS) || [];
   const card = favBtn.closest('.news-card__item');
@@ -54,12 +53,12 @@ function onFavoriteBtnClick(e) {
   };
 
   const isAlreadyInStorage = currentStorageState.some(
-    news => selectedNews.id === id
+    news => selectedNews.id === news.id
   );
 
   // перевірка чи є у сховищі
   if (!isAlreadyInStorage) {
-    currentStorageState.push([selectedNews]);
+    currentStorageState.push(selectedNews);
     save(KEY_FAV_NEWS, currentStorageState);
   }
 
@@ -67,14 +66,16 @@ function onFavoriteBtnClick(e) {
   if (favBtn.classList.contains('remove-from-fav')) {
     favBtn.textContent = 'Add to favorite';
     const updatedStorageState = currentStorageState.filter(
-      item => selectedNews.id !== id
+      item => selectedNews.id !== item.id
     );
     save(KEY_FAV_NEWS, updatedStorageState);
-
-    // додає до сховища
-    if (!favBtn.classList.contains('remove-from-fav')) {
-      favBtn.textContent = 'Remove from favorite';
-      save(KEY_FAV_NEWS, [selectedNews]);
-    }
   }
+
+  // додає до сховища
+  if (!favBtn.classList.contains('remove-from-fav')) {
+    favBtn.textContent = 'Remove from favorite';
+    save(KEY_FAV_NEWS, selectedNews);
+  }
+
+  favBtn.classList.toggle('remove-from-fav');
 }
