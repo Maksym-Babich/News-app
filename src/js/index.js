@@ -2,15 +2,11 @@ import './header';
 
 import './filter';
 import './markup';
+import './render-news-and-weather';
 
 import WEATHER_API from './weather-api';
 
-
 const weatherApi = new WEATHER_API();
-
-
-
-
 
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
 
@@ -29,4 +25,3 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
-
