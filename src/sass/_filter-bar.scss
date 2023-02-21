@@ -28,6 +28,9 @@
 .btn:hover {
   background-color: #4440F7;
   color: #fff;
+  .show-more__icon {
+      fill: #fff;
+    }
 }
 
 .show-more {
@@ -100,4 +103,17 @@
 .btn.active {
   background-color: $second-active-color;
   color: $white-color;
+
+  & .show-more__icon {
+    transform: rotate(180deg);
+    fill: #fff;
+  }
 }
+
+.text-icon_block {
+  display: flex;
+}
+
+.show-more__icon {
+  fill: #4440F7;
+  margin-left: 5px;}
