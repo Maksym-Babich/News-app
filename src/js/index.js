@@ -5,12 +5,7 @@ import './markup';
 
 import WEATHER_API from './weather-api';
 
-
 const weatherApi = new WEATHER_API();
-
-
-
-
 
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
 
@@ -29,4 +24,4 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
-
+import './favourite';

@@ -63,7 +63,7 @@ function onFavoriteBtnClick(e) {
     save(KEY_FAV_NEWS, currentStorageState);
   }
 
-  // видалає зі сховища
+  // видаляє зі сховища
   if (favBtn.classList.contains('remove-from-fav')) {
     favBtn.textContent = 'Add to favorite';
     const updatedStorageState = currentStorageState.filter(
@@ -78,19 +78,3 @@ function onFavoriteBtnClick(e) {
     }
   }
 }
-
-// рендер карток
-function renderFavorites() {
-  const favoritesContainer = document.querySelector('.favorites-list');
-
-  favoritesContainer.innerHTML = '';
-
-  const favorites = load(KEY_FAV_NEWS);
-
-  for (const favorite of favorites) {
-    const card = createNewsCard(favorite);
-    favoritesContainer.appendChild(card);
-  }
-}
-
-// написати функцію createNewsCard
