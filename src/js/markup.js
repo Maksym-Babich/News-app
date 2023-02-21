@@ -23,8 +23,8 @@ const popularNewsMarkup = newsArr => {
             </div>
         </div>
         <div class="news-card__text">
-          <h2 class="news-card__title">${textHiding(title, 30)}</h2>
-          <p class="news-card__description">${textHiding(abstract, 65)}</p>
+          <h2 class="news-card__title">${textHiding(title, 60)}</h2>
+          <p class="news-card__description">${textHiding(abstract, 150)}</p>
         </div>
         <div class="news-card__info">
           <span class="news-card__date">${published_date.replaceAll(
@@ -50,10 +50,11 @@ const searchedNewsMarkup = newsArr => {
       abstract,
       multimedia,
     } = newsItem;
+
     let urlMedia = 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg';
-    // if (multimedia.length) {
-    //   urlMedia = multimedia[0].url;
-    // }
+    if (multimedia.length) {
+      urlMedia = `https://static01.nyt.com/${multimedia[1].url}`;
+    }
     return `
     <li class="news-card__item" id=${_id}>
       <article class="news-card__article">
@@ -68,11 +69,14 @@ const searchedNewsMarkup = newsArr => {
             </div>
         </div>
         <div class="news-card__text">
-
-          <p class="news-card__description">${textHiding([abstract], 65)}</p>
+        <h2 class="news-card__title">${textHiding(headline.main, 60)}</h2>
+          <p class="news-card__description">${textHiding(abstract, 150)}</p>
         </div>
         <div class="news-card__info">
-
+        <span class="news-card__date">${format(
+          new Date(pub_date),
+          'dd/MM/yyyy'
+        )}</span>
           <a class="news-card__read-more" href=${web_url}>Read more</a>
         </div>
       </article>
@@ -82,7 +86,7 @@ const searchedNewsMarkup = newsArr => {
   return markup;
 };
 function pageNothingFound() {
-  const sect = document.querySelector(".container");
+  const sect = document.querySelector('.container');
   sect.innerHTML = `
    <h2 class = "nothing_title">We haven’t found news from this category</h2>
   <img
@@ -99,13 +103,6 @@ function pageNothingFound() {
  alt="Nothing found"
  class="nothing_img"
 />`;
-};
+}
 
 export { searchedNewsMarkup, popularNewsMarkup, pageNothingFound };
-
-/* <h2 class="news-card__title">${textHiding(headline.main, 30)}</h2> */
-
-// <span class="news-card__date">${format(
-//   new Date(pub_date),
-//   'dd/MM/yyyy'
-// )}</span>

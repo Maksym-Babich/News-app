@@ -39,16 +39,14 @@ mobileCheckbox.addEventListener('change', darkMode);
 
 queryForm.addEventListener('submit', searchNews);
 
-function searchNews(evt) {
+async function searchNews(evt) {
   evt.preventDefault();
 
-  let newsMarkupsArray = newsApi
+  let newsMarkupsArray = await newsApi
     .fetchNewsByQuerry(query.value)
     .then(response => {
       return searchedNewsMarkup(response);
     });
 
-  newsMarkupsArray.then(response => {
-    renderNewsAndWeather(response);
-  });
+  renderNewsAndWeather(newsMarkupsArray);
 }
