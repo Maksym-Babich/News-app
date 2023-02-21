@@ -6,6 +6,8 @@ function onStorage () {
 
 
 
+  
+
 // Проверяем, есть ли уже сохраненные карточки в localStorage
 const savedCards = JSON.parse(localStorage.getItem('arrayOfNews')) || [];
 
