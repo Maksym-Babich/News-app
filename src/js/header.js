@@ -1,3 +1,6 @@
+import NEWS_API from './news-api';
+const newsApi = new NEWS_API();
+console.log('test');
 function openSearchBar() {
     searchBar.classList.add('visible');
     searchIcon.classList.add('hidden');
@@ -17,7 +20,6 @@ function darkMode() {
 }
 const searchIcon = document.querySelector('.open-search-button');
 const searchBar = document.querySelector('.search-bar');
-const searchButton = document.querySelector('.submit-button');
 const burgerMenuButton = document.querySelector('.open-menu-button');
 const closeMenuButton = document.querySelector('.close-menu-button');
 const mobileMenu = document.querySelector('.mobile-menu');
@@ -29,10 +31,8 @@ burgerMenuButton.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
 checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
-
-searchButton.addEventListener('click', searchTematicNews); // searchTematicNews - функція має бути імпортована з іншого модулю
-
-function searchTematicNews(evt) {
+searchBar.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    console.log('функція searchTematicNews має бути імпортована з іншого модулю');
-}
+    searchBar.reset();
+    newsApi;
+}); 
