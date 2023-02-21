@@ -22,7 +22,9 @@ async function createPopularNews() {
     console.error(error);
   }
 }
-createPopularNews();
+
+document.addEventListener('DOMContentLoaded', createPopularNews());
+
 async function onLocationSuccess(pos) {
   weatherApi.latitude = pos.coords.latitude;
   weatherApi.longitude = pos.coords.longitude;

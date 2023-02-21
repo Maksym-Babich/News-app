@@ -33,11 +33,11 @@ export default class WEATHER_API {
 </svg>  </span>
         </div>
         
-      </li>
+      
       
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
-      <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a>`;
+      <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a></li>`;
     return weatherMarkup;
   }
 }
