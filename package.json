@@ -18,6 +18,11 @@
     "url": "https://github.com/Maksym-Babich/News-app/issues"
   },
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "date-fns": "^2.29.3",
+    "flatpickr": "^4.6.13",
+>>>>>>> Stashed changes
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
