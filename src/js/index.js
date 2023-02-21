@@ -5,10 +5,15 @@ import './markup';
 
 import WEATHER_API from './weather-api';
 import NEWS_API from './news-api';
+import {popularNewsMarkup} from './markup';
 
 const weatherApi = new WEATHER_API();
 const newsApi = new NEWS_API();
 let query = document.querySelector('input');
+
+newsApi.popularNews().then(data => {
+  
+});
 
 newsApi.fetchNewsByQuerry(query).then(response => {
   newsApi.createNewsMarkup(response);

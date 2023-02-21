@@ -85,4 +85,25 @@ const searchedNewsMarkup = newsArr => {
   return markup;
 };
 
-export { searchedNewsMarkup, popularNewsMarkup };
+function pageNothingFound() {
+  const sect = document.querySelector(".container");
+  sect.innerHTML = `
+   <h2 class = "nothing_title">We haven’t found news from this category</h2>
+  <img
+  srcset="
+     ./images/image_1.jpg      900w,
+     ./images/image_1@2x.jpg   708w,
+     ./images/image_2.jpg      540w,
+     ./images/image_2@2x.jpg   450w,
+     ./images/image_3.jpg      354w,
+     ./images/image_3@2x.jpg   270w
+ "
+ sizes="(min-width: 1200px) 900px,(min-width: 768px) 354px, 270px"
+ src="./images/image_3@2x.jpg"
+ alt="Nothing found"
+ class="nothing_img"
+/>`;
+}
+
+
+export { searchedNewsMarkup, popularNewsMarkup, pageNothingFound };

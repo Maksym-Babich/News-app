@@ -14,5 +14,17 @@ export default class NEwS_API {
     async createNewsMarkup(arrayOfNews) {
        getMarkup(arrayOfNews.response.docs)
     }
+
+    async popularNews() {
+        try {
+        const response = await fetch(`https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${KEY}`);
+        const data = await response.json();
+            if (data.status === 404) {
+                throw new Error(console.error);
+            }else return data.results;
+            } catch (error) {
+                console.log(error);
+            }
+    }
 }
 
