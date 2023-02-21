@@ -1,6 +1,6 @@
 import NEWS_API from './news-api';
 const newsApi = new NEWS_API();
-console.log('test');
+// console.log('test');//
 function openSearchBar() {
     searchBar.classList.add('visible');
     searchIcon.classList.add('hidden');
@@ -17,6 +17,9 @@ function darkMode() {
   } else {
       body.classList.remove('dark');
   }
+};
+function markCurrentMenu(evt) {
+console.log(evt.target);
 }
 const searchIcon = document.querySelector('.open-search-button');
 const searchBar = document.querySelector('.search-bar');
@@ -26,6 +29,9 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const checkbox = document.querySelector('.checkbox');
 const mobileCheckbox = document.querySelector('.mobile-checkbox');
 const body = document.querySelector('body');
+const home = document.querySelector('#home');
+const favourite = document.querySelector('#favourite');
+const read = document.querySelector('#read');
 searchIcon.addEventListener('click', openSearchBar);
 burgerMenuButton.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
@@ -36,3 +42,19 @@ searchBar.addEventListener('submit', (evt) => {
     searchBar.reset();
     newsApi;
 }); 
+const test = window.location.pathname;//
+console.log(test);//
+
+if (window.location.pathname.indexOf('/favourite.html') === 0) {
+    home.classList.remove('current');
+    read.classList.remove('current');
+    favourite.classList.add('current');
+} else if (window.location.pathname.indexOf('/read.html') === 0) {
+    home.classList.remove('current');
+    favourite.classList.remove('current');
+    read.classList.add('current');
+} else {
+    favourite.classList.remove('current');
+    read.classList.remove('current');
+    home.classList.add('current');
+};
