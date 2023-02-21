@@ -74,7 +74,6 @@ function onFavoriteBtnClick(e) {
   // додає до сховища
   if (!favBtn.classList.contains('remove-from-fav')) {
     favBtn.textContent = 'Remove from favorite';
-    save(KEY_FAV_NEWS, selectedNews);
   }
 
   favBtn.classList.toggle('remove-from-fav');
