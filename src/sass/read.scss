@@ -73,9 +73,15 @@
   }
 }
 
+
+.search-bar {
+  visibility: hidden;
+}
+
 .read-cards-container {
 }
 
 .dark {
   color: $dt-main-text-color;
 }
+

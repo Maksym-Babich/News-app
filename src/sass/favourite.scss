@@ -4,6 +4,13 @@
 @import './card';
 @import './footer';
 
+
+
+
+.search-bar {
+    visibility: hidden;
+}
+
 .favorite {
   padding-top: 40px;
   @media screen and (min-width: 768px) {
@@ -13,3 +20,4 @@
     padding-top: 60px;
   }
 }
+
