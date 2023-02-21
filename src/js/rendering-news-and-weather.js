@@ -1,13 +1,13 @@
 import { WEATHER_API } from './weather-api';
-import { getMarkupV2 } from './markup';
+import { searchedNewsMarkup } from './markup';
 
 const cardsContainer = document.querySelector('.news-card__list');
 
 let newsAndWeatherMarkupArray = [];
 const weatherMarkup = WEATHER_API.createWeatherMarkup();
 
-export default function renderNewsAndWeather(newsArray) {
-  newsAndWeatherMarkupArray.push(getMarkupV2(newsArray));
+export default function renderNewsAndWeather(newsArr) {
+  newsAndWeatherMarkupArray.push(searchedNewsMarkup(newsArr));
 
   if (window.matchMedia('(min-width: 768px)').matches) {
     newsAndWeatherMarkupArray.splice(1, 0, weatherMarkup);
