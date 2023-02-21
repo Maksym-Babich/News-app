@@ -2,7 +2,6 @@ import './header';
 
 import './filter';
 import './markup';
-import './rendering-news-and-weather';
 
 import WEATHER_API from './weather-api';
 
@@ -30,3 +29,4 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
+
