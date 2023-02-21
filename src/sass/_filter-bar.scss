@@ -99,9 +99,7 @@
 .btn.active {
   background-color: $second-active-color;
   color: $white-color;
-
   & .show-more__icon {
-    transform: rotate(180deg);
     fill: #fff;
   }
 }
@@ -113,6 +111,9 @@
 .show-more__icon {
   fill: #4440f7;
   margin-left: 5px;
+}
+.show-more__icon--active {
+  transform: rotate(180deg);
 }
 
 .filter__list {
