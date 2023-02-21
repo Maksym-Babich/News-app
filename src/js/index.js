@@ -38,3 +38,4 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
+import './favourite';
