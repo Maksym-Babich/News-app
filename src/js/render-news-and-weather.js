@@ -1,5 +1,4 @@
 import WEATHER_API from './weather-api';
-import { searchedNewsMarkup } from './markup';
 
 const cardsContainer = document.querySelector('.news-card__list');
 const weatherApi = new WEATHER_API();
@@ -9,7 +8,9 @@ let newsAndWeatherMarkupArray = [];
 const weatherMarkup = weatherApi.createWeatherMarkup();
 
 export default function renderNewsAndWeather(newsArr) {
-  newsAndWeatherMarkupArray = searchedNewsMarkup(newsArr);
+
+  newsAndWeatherMarkupArray.push(...newsArr);
+
 
   if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 0, weatherMarkup);
