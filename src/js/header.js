@@ -1,21 +1,22 @@
 import NEWS_API from './news-api';
+import { searchedNewsMarkup } from './markup';
 const newsApi = new NEWS_API();
 
 function openSearchBar() {
-    searchBar.classList.add('visible');
-    searchIcon.classList.add('hidden');
+  searchBar.classList.add('visible');
+  searchIcon.classList.add('hidden');
 }
 function openMenu() {
-    mobileMenu.classList.remove('hidden');
+  mobileMenu.classList.remove('hidden');
 }
 function closeMenu() {
-    mobileMenu.classList.add('hidden');
+  mobileMenu.classList.add('hidden');
 }
 function darkMode() {
   if (this.checked) {
-      body.classList.add('dark');
+    body.classList.add('dark');
   } else {
-      body.classList.remove('dark');
+    body.classList.remove('dark');
   }
 }
 const searchIcon = document.querySelector('.open-search-button');
@@ -27,7 +28,7 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const checkbox = document.querySelector('.checkbox');
 const mobileCheckbox = document.querySelector('.mobile-checkbox');
 const body = document.querySelector('body');
-const queryForm = document.querySelector('.search-bar')
+const queryForm = document.querySelector('.search-bar');
 let query = document.querySelector('.search-field');
 searchIcon.addEventListener('click', openSearchBar);
 burgerMenuButton.addEventListener('click', openMenu);
@@ -35,13 +36,16 @@ closeMenuButton.addEventListener('click', closeMenu);
 checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
 
-queryForm.addEventListener('submit', searchNews)
-
+queryForm.addEventListener('submit', searchNews);
 
 function searchNews(evt) {
-    evt.preventDefault();
-    
-newsApi.fetchNewsByQuerry(query.value).then(response => {
-  newsApi.createNewsMarkup(response);
-});
+  evt.preventDefault();
+
+  let newsArray = newsApi.fetchNewsByQuerry(query.value).then(response => {
+    searchedNewsMarkup(response);
+  });
+  console.log(newsArray);
+  //         .then(response => {
+  //     searchedNewsMarkup(response.response.docs);
+  //   });
 }

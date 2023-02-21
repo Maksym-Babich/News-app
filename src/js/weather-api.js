@@ -1,8 +1,6 @@
 const API_KEY = '94b2a12c85f4ec978a20428df76a9098';
 import { format } from 'date-fns';
 
-
-
 export default class WEATHER_API {
   constructor() {
     (this.latitude = ''), (this.longitude = '');
@@ -41,7 +39,7 @@ export default class WEATHER_API {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a>`;
-    
-      return weatherMarkup
+
+    return weatherMarkup;
   }
 }
