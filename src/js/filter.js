@@ -35,6 +35,7 @@ async function renderCategoryList() {
 const renderMarkupFilter = (array, amount) => {
   const buttonsArray = array.slice(0, amount);
   const dropdownArray = array.slice(amount, -1);
+
   let readyMarkup = [];
   readyMarkup = buttonsArray.map(
     button =>
@@ -54,10 +55,17 @@ const renderMarkupFilter = (array, amount) => {
   
   readyMarkup.push(`
     <div class="btn show-more">
+
   <div class="text-icon_block">
   <span class="show-more_btn">${window.innerWidth < 768 ? 'Categories' : 'Others'}</span>
     ${svg}
   </div>
+
+  <span class="show-more_btn">${
+    window.innerWidth < 768 ? 'Categories' : 'Others'
+  }</span>
+
+
   <div class="show-more__categories">
   ${dropdownArray
     .map(
@@ -72,13 +80,18 @@ const renderMarkupFilter = (array, amount) => {
   document
     .getElementById('buttons-container')
     .insertAdjacentHTML('beforeend', readyMarkup.join(''));
-  document
-    .querySelector('.show-more')
-    .addEventListener('click', () =>
-      document
-        .querySelector('.show-more__categories')
-        .classList.toggle('show-more__categories--open')
-    );
+  const showMoreButton = document.querySelector('.show-more');
+  const showMoreCategories = document.querySelector('.show-more__categories');
+  const closeCategories = () => {
+    if (showMoreCategories.classList.contains('show-more__categories--open')) {
+      showMoreCategories.classList.remove('show-more__categories--open');
+    }
+  };
+  showMoreButton.addEventListener('click', event => {
+    event.stopPropagation();
+    showMoreCategories.classList.toggle('show-more__categories--open');
+  });
+  document.addEventListener('click', closeCategories);
   onClickSection();
 };
 

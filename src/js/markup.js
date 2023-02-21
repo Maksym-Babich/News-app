@@ -1,8 +1,7 @@
 import { format } from 'date-fns';
 import { textHiding } from './news-text-hiding';
-export { getMarkupV3, getMarkupV2 };
 
-const getMarkup = newsArr => {
+const popularNewsMarkup = newsArr => {
   const markup = newsArr.map(newsItem => {
     const { url, id, published_date, section, title, abstract, media } =
       newsItem;
@@ -24,13 +23,8 @@ const getMarkup = newsArr => {
             </div>
         </div>
         <div class="news-card__text">
-feature/news-cards-markup
           <h2 class="news-card__title">${textHiding(title, 30)}</h2>
           <p class="news-card__description">${textHiding(abstract, 65)}</p>
-
-          <h2 class="news-card__title">${textHiding(title, 65)}</h2>
-          <p class="news-card__description">${textHiding(abstract, 120)}</p>
- main
         </div>
         <div class="news-card__info">
           <span class="news-card__date">${published_date.replaceAll(
@@ -45,7 +39,7 @@ feature/news-cards-markup
   });
   return markup;
 };
-const getMarkupV2 = newsArr => {
+const searchedNewsMarkup = newsArr => {
   const markup = newsArr.map(newsItem => {
     const {
       web_url,
@@ -90,3 +84,5 @@ const getMarkupV2 = newsArr => {
   });
   return markup;
 };
+
+export { searchedNewsMarkup, popularNewsMarkup };

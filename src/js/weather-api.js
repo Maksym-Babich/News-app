@@ -1,7 +1,7 @@
 const API_KEY = '94b2a12c85f4ec978a20428df76a9098';
 import { format } from 'date-fns';
 
-const container = document.querySelector('.weather');
+
 
 export default class WEATHER_API {
   constructor() {
@@ -15,12 +15,12 @@ export default class WEATHER_API {
   }
   async fetchWidthLocation() {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&units=metric&appid=${API_KEY}`
     );
     return response.json();
   }
-  async createMarkup(response) {
-    container.innerHTML = `
+  async createWeatherMarkup(response) {
+    const weatherMarkup = `
    <div class="weather-info">
        <span class="weather-info__degrees">${Math.floor(
          response.main.temp
@@ -41,5 +41,7 @@ export default class WEATHER_API {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a>`;
+    
+      return weatherMarkup
   }
 }

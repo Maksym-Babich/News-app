@@ -129,3 +129,10 @@
     }
   }
 }
+
+.dark .news-card {
+  &__item {
+    background-color: $dt-main-bg-color;
+    color: $dt-main-text-color;
+  }
+}

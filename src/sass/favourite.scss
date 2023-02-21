@@ -3,3 +3,13 @@
 @import './header';
 @import './card';
 @import './footer';
+
+.favorite {
+  padding-top: 40px;
+  @media screen and (min-width: 768px) {
+    padding-top: 48px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 60px;
+  }
+}

@@ -1,3 +1,6 @@
+import NEWS_API from './news-api';
+const newsApi = new NEWS_API();
+
 function openSearchBar() {
     searchBar.classList.add('visible');
     searchIcon.classList.add('hidden');
@@ -24,15 +27,21 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const checkbox = document.querySelector('.checkbox');
 const mobileCheckbox = document.querySelector('.mobile-checkbox');
 const body = document.querySelector('body');
+const queryForm = document.querySelector('.search-bar')
+let query = document.querySelector('.search-field');
 searchIcon.addEventListener('click', openSearchBar);
 burgerMenuButton.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
 checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
 
-searchButton.addEventListener('click', searchTematicNews); // searchTematicNews - функція має бути імпортована з іншого модулю
+queryForm.addEventListener('submit', searchNews)
 
-function searchTematicNews(evt) {
+
+function searchNews(evt) {
     evt.preventDefault();
-    console.log('функція searchTematicNews має бути імпортована з іншого модулю');
+    
+newsApi.fetchNewsByQuerry(query.value).then(response => {
+  newsApi.createNewsMarkup(response);
+});
 }
