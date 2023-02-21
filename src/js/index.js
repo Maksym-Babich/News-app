@@ -6,13 +6,16 @@ import './render-news-and-weather';
 
 import WEATHER_API from './weather-api';
 import NEWS_API from './news-api';
+import renderNewsAndWeather from './render-news-and-weather';
 
 const weatherApi = new WEATHER_API();
 const newsApi = new NEWS_API();
 
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
 
-newsApi.popularNews().then(data => {});
+newsApi.popularNews().then(data => {
+   renderNewsAndWeather(data);
+});
 
 async function onLocationSuccess(pos) {
   weatherApi.latitude = pos.coords.latitude;
