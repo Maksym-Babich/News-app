@@ -1,7 +1,7 @@
 const API_KEY = '94b2a12c85f4ec978a20428df76a9098';
 import { format } from 'date-fns';
 
-const container = document.querySelector('.weather');
+
 
 export default class WEATHER_API {
   constructor() {
