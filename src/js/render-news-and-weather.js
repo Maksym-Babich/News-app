@@ -8,7 +8,9 @@ let newsAndWeatherMarkupArray = [];
 const weatherMarkup = weatherApi.createWeatherMarkup();
 
 export default function renderNewsAndWeather(newsArr) {
+
   newsAndWeatherMarkupArray.push(...newsArr);
+
 
   if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 0, weatherMarkup);

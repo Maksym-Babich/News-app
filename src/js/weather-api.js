@@ -17,9 +17,9 @@ export default class WEATHER_API {
     );
     return response.json();
   }
-  async createWeatherMarkup(response) {
-  const weatherMarkup = `
-   <li class="weather-info" class="news-card__item">
+  createWeatherMarkup(response) {
+    const weatherMarkup = `
+   <li class="weather-info weather news-card__item " 
        <span class="weather-info__degrees">${Math
          .floor
          //  response.main.temp
