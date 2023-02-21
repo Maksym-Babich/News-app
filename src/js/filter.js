@@ -60,12 +60,6 @@ const renderMarkupFilter = (array, amount) => {
   <span class="show-more_btn">${window.innerWidth < 768 ? 'Categories' : 'Others'}</span>
     ${svg}
   </div>
-
-  <span class="show-more_btn">${
-    window.innerWidth < 768 ? 'Categories' : 'Others'
-  }</span>
-
-
   <div class="show-more__categories">
   ${dropdownArray
     .map(
