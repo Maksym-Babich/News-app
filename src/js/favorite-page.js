@@ -1,6 +1,17 @@
-const favoritesContainer = document.querySelector('.favorites-list');
+const favoritesContainer = document.querySelector('.favorite__list');
+
+const KEY_FAV_NEWS = 'favorite-news';
 
 favoritesContainer.innerHTML = '';
+
+const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 const favorites = load(KEY_FAV_NEWS);
 
