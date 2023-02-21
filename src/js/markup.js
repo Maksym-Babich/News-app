@@ -86,7 +86,7 @@ const searchedNewsMarkup = newsArr => {
   return markup;
 };
 function pageNothingFound() {
-  const sect = document.querySelector('.container');
+  const sect = document.querySelector('.news-card');
   sect.innerHTML = `
    <h2 class = "nothing_title">We haven’t found news from this category</h2>
   <img
