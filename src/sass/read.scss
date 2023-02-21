@@ -41,6 +41,7 @@
   display: flex;
   align-items: baseline;
   cursor: pointer;
+  color: inherit;
 
   &__icon {
     fill: currentColor;
@@ -73,4 +74,8 @@
 }
 
 .read-cards-container {
+}
+
+.dark {
+  color: $dt-main-text-color;
 }

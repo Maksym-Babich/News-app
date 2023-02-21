@@ -75,10 +75,13 @@ const renderMarkupFilter = (array, amount) => {
     .getElementById('buttons-container')
     .insertAdjacentHTML('beforeend', readyMarkup.join(''));
   const showMoreButton = document.querySelector('.show-more');
+  const showMoreSvg = document.querySelector('.show-more__icon');
   const showMoreCategories = document.querySelector('.show-more__categories');
   const closeCategories = () => {
     if (showMoreCategories.classList.contains('show-more__categories--open')) {
       showMoreCategories.classList.remove('show-more__categories--open');
+      showMoreButton.classList.remove('active');
+      showMoreSvg.classList.remove('show-more__icon--active');
     }
   };
   showMoreButton.addEventListener('click', event => {
@@ -91,13 +94,19 @@ const renderMarkupFilter = (array, amount) => {
 
 function onClickSection() {
   const buttons = document.querySelectorAll('.btn');
+  const showMoreSvg = document.querySelector('.show-more__icon');
   let activeButton = null;
   buttons.forEach(button => {
     button.addEventListener('click', e => {
       if (activeButton !== null) {
         activeButton.classList.remove('active');
+        showMoreSvg.classList.remove('show-more__icon--active');
       }
       button.classList.add('active');
+      if (button.classList.contains('show-more')) {
+        showMoreSvg.classList.add('show-more__icon--active');
+      }
+
       activeButton = button;
     });
     // window.addEventListener('click', e => activeButton.classList.remove('active') )
