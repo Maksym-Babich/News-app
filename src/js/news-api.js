@@ -3,7 +3,7 @@ const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 
 
-export default class NEwS_API {
+export default class NEWS_API {
  
 
     async fetchNewsByQuerry(query) {
