@@ -8,11 +8,11 @@ export default class NEWS_API {
 `);
     const objectOfNews = await response.json();
     const arrayOfNews = objectOfNews.response.docs;
-    console.log(arrayOfNews);
     return arrayOfNews;
   }
 
   async createNewsMarkup(arrayOfNews) {
     searchedNewsMarkup(arrayOfNews);
+    console.log(searchedNewsMarkup(arrayOfNews));
   }
 }

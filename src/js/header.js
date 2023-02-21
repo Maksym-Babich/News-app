@@ -1,5 +1,6 @@
 import NEWS_API from './news-api';
 import { searchedNewsMarkup } from './markup';
+import renderNewsAndWeather from './render-news-and-weather';
 const newsApi = new NEWS_API();
 
 function openSearchBar() {
@@ -41,11 +42,13 @@ queryForm.addEventListener('submit', searchNews);
 function searchNews(evt) {
   evt.preventDefault();
 
-  let newsArray = newsApi.fetchNewsByQuerry(query.value).then(response => {
-    searchedNewsMarkup(response);
+  let newsMarkupsArray = newsApi
+    .fetchNewsByQuerry(query.value)
+    .then(response => {
+      return searchedNewsMarkup(response);
+    });
+
+  newsMarkupsArray.then(response => {
+    renderNewsAndWeather(response);
   });
-  console.log(newsArray);
-  //         .then(response => {
-  //     searchedNewsMarkup(response.response.docs);
-  //   });
 }

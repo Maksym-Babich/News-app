@@ -24,6 +24,6 @@ export default function renderNewsAndWeather(newsArr) {
     newsAndWeatherMarkupArray.splice(2, 0, weatherMarkup);
   }
 
-  cardsContainer.innerHTML(newsAndWeatherMarkupArray.join(''));
+  cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
+  console.log(newsAndWeatherMarkupArray);
 }
-renderNewsAndWeather();

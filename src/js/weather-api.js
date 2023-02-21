@@ -18,28 +18,29 @@ export default class WEATHER_API {
     return response.json();
   }
   async createWeatherMarkup(response) {
-    const weatherMarkup = `
-   <div class="weather-info">
-       <span class="weather-info__degrees">${Math.floor(
-         response.main.temp
-       )}°</span>
+  const weatherMarkup = `
+   <li class="weather-info" class="news-card__item">
+       <span class="weather-info__degrees">${Math
+         .floor
+         //  response.main.temp
+         ()}°</span>
         <div class="weather-info__group">
-            <span class="weather-info__description">${
-              response.weather[0].main
-            }</span>
+            <span class="weather-info__description">
+         
+            </span>
             <span class="weather-info__location"><svg>
     <use href="../images/sprite.svg#location"></use>
-</svg>${response.name}</span>
+</svg>  </span>
         </div>
         
-      </div>
-      <img src="https://openweathermap.org/img/wn/${
-        response.weather[0].icon
-      }@4x.png" alt="${response.weather[0].description}" class="weather-img" />
+      </li>
+      
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a>`;
-
     return weatherMarkup;
   }
 }
+//  ${response.weather[0].main} 29-та строка
+// ${response.name} 33- тя
+// /* <img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@4x.png" alt="${response.weather[0].description}" class="weather-img" /> */ 37 строка
