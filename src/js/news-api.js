@@ -22,6 +22,7 @@ export default class NEWS_API {
         `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${KEY}`
       );
       const data = await response.json();
+
       if (data.status === 404) {
         throw new Error(console.error);
       } else return data.results;

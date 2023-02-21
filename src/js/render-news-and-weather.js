@@ -8,9 +8,8 @@ let newsAndWeatherMarkupArray = [];
 const weatherMarkup = weatherApi.createWeatherMarkup();
 
 export default function renderNewsAndWeather(newsArr) {
-
+  cardsContainer.innerHTML = '';
   newsAndWeatherMarkupArray.push(...newsArr);
-
 
   if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 0, weatherMarkup);
@@ -27,3 +26,6 @@ export default function renderNewsAndWeather(newsArr) {
 
   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
 }
+
+
+
