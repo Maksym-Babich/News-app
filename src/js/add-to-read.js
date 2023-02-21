@@ -1,7 +1,7 @@
 const KEY_ALREADY_READ = 'read-news';
 const newsLists = document.querySelectorAll('news-card__list');
 
-const saveReadRead = (key, value) => {
+const saveRead = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -10,7 +10,7 @@ const saveReadRead = (key, value) => {
   }
 };
 
-const loadReadRead = key => {
+export const loadRead = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -27,7 +27,7 @@ function onReadMoreClick(e) {
   const readMoreBtn = e.target.closest('.news-card__read-more');
   if (!readMoreBtn) return;
 
-  let currentStorageState = loadReadRead(KEY_ALREADY_READ) || [];
+  let currentStorageState = loadRead(KEY_ALREADY_READ) || [];
   const card = readMoreBtn.closest('.news-card__item');
   card.classList.add('already-read');
 
