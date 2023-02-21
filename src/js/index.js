@@ -4,15 +4,13 @@ import './filter';
 import './markup';
 
 import WEATHER_API from './weather-api';
-import NEWS_API from './news-api';
+
 
 const weatherApi = new WEATHER_API();
-const newsApi = new NEWS_API();
-let query = document.querySelector('input');
 
-newsApi.fetchNewsByQuerry(query).then(response => {
-  newsApi.createNewsMarkup(response);
-});
+
+
+
 
 navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
 
@@ -31,3 +29,4 @@ function onLocationError() {
 }
 
 import './news-text-hiding';
+
