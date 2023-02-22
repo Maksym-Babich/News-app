@@ -276,7 +276,9 @@ async function getNewsByCategory(category) {
     const newsByCategory = response.results;
     return newsByCategory;
 
-  } catch (error) { console.log(error)}
+  } catch (error) { console.log(error) }
+  
+  popularNewsMarkup(newsByCategory)
 }
 
 const btnFilter = document.getElementsByClassName('btn')
@@ -284,8 +286,6 @@ const btnFilter = document.getElementsByClassName('btn')
 btnFilter.addEventListener('click', event => {
   const category = event.target.dataset.section;
   getNewsByCategory(category)
-
-
 } )
 
 
