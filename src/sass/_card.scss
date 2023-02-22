@@ -1,5 +1,7 @@
 @media screen and (min-width: $phone) {
   .news-card {
+    padding-top: 40px;
+      padding-bottom: 40px;
     &__list {
       display: flex;
       flex-wrap: wrap;
@@ -83,6 +85,8 @@
 
 @media screen and (min-width: $tablet) {
   .news-card {
+    padding-top: 48px;
+      padding-bottom: 48px;
     &__list {
       justify-content: start;
     }
@@ -112,6 +116,8 @@
 
 @media screen and (min-width: $desktop) {
   .news-card {
+    padding-top: 60px;
+    padding-bottom: 60px;
     &__item {
       width: 395px;
     }
