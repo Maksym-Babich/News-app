@@ -1,4 +1,6 @@
 import { popularNewsMarkup } from './markup';
+import {searchedNewsMarkup} from './markup'
+import renderNewsAndWeather from './render-news-and-weather'
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 export default async function getCategoryList() {
@@ -88,6 +90,7 @@ const renderMarkupFilter = (array, amount) => {
   });
   document.addEventListener('click', closeCategories);
   onClickSection();
+  onBtnFilterClick()
 };
 
 function onClickSection() {
@@ -274,19 +277,19 @@ async function getNewsByCategory(category) {
     );
     const response = await fetchApiByCategory.json();
     const newsByCategory = response.results;
+    console.log(newsByCategory);
     return newsByCategory;
 
   } catch (error) { console.log(error) }
   
-  popularNewsMarkup(newsByCategory)
+  renderNewsAndWeather(searchedNewsMarkup(newsByCategory))
 }
 
-const btnFilter = document.getElementsByClassName('btn')
-
-btnFilter.addEventListener('click', event => {
-  const category = event.target.dataset.section;
+function onBtnFilterClick() {
+  const btnsFilter = document.querySelectorAll('.btn')
+  btnsFilter.forEach(btnFilter => {btnFilter.addEventListener('click', event => {
+    const category = event.target.dataset.section;
   getNewsByCategory(category)
-} )
-
-
+} )})
+}
 
