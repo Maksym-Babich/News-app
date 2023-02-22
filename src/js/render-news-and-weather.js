@@ -104,6 +104,8 @@ export default async function renderNewsAndWeather(markupsArr) {
     pageNothingFound();
   }
 
+newsAndWeatherMarkupArray = [];
+
   newsAndWeatherMarkupArray.push(...markupsArr);
   const weatherMarkup = await noLocation();
 
@@ -119,8 +121,9 @@ export default async function renderNewsAndWeather(markupsArr) {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     newsAndWeatherMarkupArray.splice(2, 0, weatherMarkup);
   }
-  cardsContainer.innerHTML = '';
+
+
   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
-  fetchRead();
-  return newsAndWeatherMarkupArray;
+   fetchRead();
+
 }

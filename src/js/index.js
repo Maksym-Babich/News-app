@@ -4,6 +4,8 @@ import './filter';
 import './markup';
 import './render-news-and-weather';
 import './add-to-read';
+import './pagination/pagination'
+
 
 import NEWS_API from './news-api';
 import renderNewsAndWeather from './render-news-and-weather';
