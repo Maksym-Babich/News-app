@@ -105,7 +105,7 @@ document
   .addEventListener('click', function (e) {
     
     handleButton(e.target);
-    console.log('меня жмакнули')
+    // console.log('меня жмакнули')
   });
 
 function handleButton(element) {
@@ -147,7 +147,7 @@ function handleButtonRight() {
 refs.pagination.addEventListener('click', e => {
   
   const ele = e.target;
-  console.log(ele)
+  // console.log(ele)
    if (
     (e.target.classList.contains('next-page') ||
      e.target.classList.contains('btn-next'))&&
@@ -166,5 +166,5 @@ refs.pagination.addEventListener('click', e => {
     valuePage.curPage -= 1
     valuePage.offset -= 10;
   }
-  console.log(valuePage.offset)
+  // console.log(valuePage.offset)
 })
