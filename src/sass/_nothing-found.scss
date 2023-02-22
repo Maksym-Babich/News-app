@@ -1,5 +1,10 @@
 @media screen and (min-width: $phone) {
     .nothing{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
         &_title{
             font-family: 'Manrope';
             font-weight: 700;
