@@ -87,7 +87,7 @@ const searchedNewsMarkup = newsArr => {
 };
 function pageNothingFound() {
   const sect = document.querySelector('.news-card');
-  sect.innerHTML = `
+  sect.innerHTML = `<div class="nothing">
    <h2 class = "nothing_title">We haven’t found news from this category</h2>
   <img
   srcset="
@@ -102,7 +102,7 @@ function pageNothingFound() {
  src="./images/image_3@2x.jpg"
  alt="Nothing found"
  class="nothing_img"
-/>`;
+/></div>`;
 }
 
 export { searchedNewsMarkup, popularNewsMarkup, pageNothingFound };
