@@ -1,3 +1,4 @@
+import { popularNewsMarkup } from './markup';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 export default async function getCategoryList() {
@@ -269,15 +270,16 @@ async function getNewsByCategory(category) {
     const searchCategory = encodeURIComponent(category);
 
     const fetchApiByCategory = await fetch(
-      `https://api.nytimes.com/svc/news/v3/content/all/${searchCategory}.json?api-key=${KEY}&limit=26`
+      `https://api.nytimes.com/svc/news/v3/content/all/${searchCategory}.json?api-key=${KEY}`
     );
-
     const response = await fetchApiByCategory.json();
-    
     const newsByCategory = response.results;
-    
     return newsByCategory;
-    
+
   } catch (error) { console.log(error)}
 }
+
+
+
+
 
