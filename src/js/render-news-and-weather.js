@@ -102,7 +102,7 @@ export default async function renderNewsAndWeather(markupsArr) {
     cardsContainer.innerHTML = '';
     pageNothingFound();
   }
-
+newsAndWeatherMarkupArray = [];
   newsAndWeatherMarkupArray.push(...markupsArr);
   const weatherMarkup = await noLocation();
 
@@ -120,5 +120,5 @@ export default async function renderNewsAndWeather(markupsArr) {
   }
 
   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
-  newsAndWeatherMarkupArray = [];
+  
 }
