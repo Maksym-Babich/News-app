@@ -1,6 +1,7 @@
 import { pageNothingFound } from './markup';
 import WEATHER_API from './weather-api';
 import { format } from 'date-fns';
+import { fetchRead } from './fetch-read';
 const API_KEY = '05383c6978b3bc81d3b473e0eed83dd7';
 const cardsContainer = document.querySelector('.news-card__list');
 
@@ -102,7 +103,9 @@ export default async function renderNewsAndWeather(markupsArr) {
     cardsContainer.innerHTML = '';
     pageNothingFound();
   }
+
 newsAndWeatherMarkupArray = [];
+
   newsAndWeatherMarkupArray.push(...markupsArr);
   const weatherMarkup = await noLocation();
 
@@ -119,6 +122,8 @@ newsAndWeatherMarkupArray = [];
     newsAndWeatherMarkupArray.splice(2, 0, weatherMarkup);
   }
 
+
   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
-  
+   fetchRead();
+
 }

@@ -31,7 +31,7 @@ const popularNewsMarkup = newsArr => {
             '-',
             '/'
           )}</span>
-          <a class="news-card__read-more" href=${url}>Read more</a>
+          <a class="news-card__read-more" href=${url} target='blank'>Read more</a>
         </div>
       </article>
     </li>
@@ -115,7 +115,7 @@ const searchedNewsMarkup = newsArr => {
           new Date(pub_date),
           'dd/MM/yyyy'
         )}</span>
-          <a class="news-card__read-more" href=${web_url}>Read more</a>
+          <a class="news-card__read-more" href=${web_url} target='blank'>Read more</a>
         </div>
       </article>
     </li>
