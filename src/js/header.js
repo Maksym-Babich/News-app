@@ -36,8 +36,12 @@ const mobileCheckbox = document.querySelector('.mobile-checkbox');
 const body = document.querySelector('body');
 
 const home = document.querySelector('#home');
+const mobileHome = document.querySelector('#mobile-home');
+console.log(mobileHome);
 const favourite = document.querySelector('#favourite');
+const mobileFavourite = document.querySelector('#mobile-favourite');
 const read = document.querySelector('#read');
+const mobileRead = document.querySelector('#mobile-read');
 
 const queryForm = document.querySelector('.search-bar');
 let query = document.querySelector('.search-field');
@@ -49,28 +53,37 @@ checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
 
 
-if (window.location.pathname.indexOf('/favourite.html') === 0) {
-    home.classList.remove('current');
-    read.classList.remove('current');
-    favourite.classList.add('current');
-} else if (window.location.pathname.indexOf('/read.html') === 0) {
-    home.classList.remove('current');
-    favourite.classList.remove('current');
-    read.classList.add('current');
-} else {
-    favourite.classList.remove('current');
-    read.classList.remove('current');
-    home.classList.add('current');
+if (window.location.pathname.indexOf('/favourite') === 0) {
+  home.classList.remove('current');
+  mobileHome.classList.remove('mobile-current');
+  read.classList.remove('current');
+  mobileRead.classList.remove('mobile-current');
+  favourite.classList.add('current');
+  mobileFavourite.classList.add('mobile-current');
+} else if (window.location.pathname.indexOf('/read') === 0) {
+  home.classList.remove('current');
+  mobileHome.classList.remove('mobile-current');
+  favourite.classList.remove('current');
+  mobileFavourite.classList.remove('mobile-current');
+  read.classList.add('current');
+  mobileRead.classList.add('mobile-current');
+} else if (window.location.pathname.indexOf('/index') === 0){
+  favourite.classList.remove('current');
+  mobileFavourite.classList.remove('mobile-current');
+  read.classList.remove('current');
+  mobileRead.classList.remove('mobile-current');
+  home.classList.add('current');
+  mobileHome.classList.add('mobile-current');
 };
 if (localStorage.getItem('dark-theme') === 'dark') {
-    body.classList.add('dark');
-    checkbox.checked = true;
-    mobileCheckbox.checked = true;
+  body.classList.add('dark');
+  checkbox.checked = true;
+  mobileCheckbox.checked = true;
 } else {
-    body.classList.remove('dark');
-    checkbox.checked = false;
-    mobileCheckbox.checked = false;
-
+  body.classList.remove('dark');
+  checkbox.checked = false;
+  mobileCheckbox.checked = false;
+};
 
 queryForm.addEventListener('submit', searchNews);
 
@@ -85,4 +98,4 @@ async function searchNews(evt) {
 
   renderNewsAndWeather(newsMarkupsArray);
 
-}
+};

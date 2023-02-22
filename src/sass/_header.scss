@@ -87,6 +87,10 @@
 .current {
     border-bottom: 1px solid $active-color;
 }
+.mobile-current{
+    background-color: $second-active-color;
+    color: $dt-main-text-color;
+}
 .submit-button {
     background-color: transparent;
     border: none;
@@ -125,6 +129,9 @@
         &.hidden {
             visibility: hidden;
             opacity: 0;
+        };
+        @media screen and (min-width: $tablet) {
+            visibility: hidden;
         }
 }
 .mobile-menu-list {
@@ -244,6 +251,18 @@
         };
     }
 }
+[aria-label="Sun"] {
+    stroke: $active-color;
+    fill: $active-color;
+}
+[aria-label="Moon"] {
+    stroke: $not-active-color;
+    fill: $not-active-color;
+}
+[aria-label="Close mobile menu button"], [aria-label="Mobile menu button"]{
+    stroke: $main-text-color;
+    fill: $main-text-color;
+}
 .dark {
     background-color: $dt-main-bg-color;
     color: $dt-main-text-color;
@@ -264,4 +283,30 @@
         background-color: $dt-main-bg-color;
         color: $dt-main-text-color;
     };
+    .search-bar {
+        border-color: $dt-main-text-color;
+        .search-field{
+            color: $secondary-text-color;
+        }
+    };
+    [aria-label="Search field button"] {
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    };
+    [aria-label="Favorite"] {
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    };
+    [aria-label="Sun"] {
+        stroke: $not-active-color;
+        fill: $not-active-color;
+    };
+    [aria-label="Moon"] {
+        stroke: $active-color;
+        fill: $active-color;
+    };
+    [aria-label="Close mobile menu button"], [aria-label="Mobile menu button"]{
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    }
 }
