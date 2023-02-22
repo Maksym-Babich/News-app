@@ -4,18 +4,16 @@ import { format } from 'date-fns';
 const API_KEY = '05383c6978b3bc81d3b473e0eed83dd7';
 const cardsContainer = document.querySelector('.news-card__list');
 
-
 let newsAndWeatherMarkupArray = [];
 
 let latitude = '';
 let longitude = '';
 
-
 async function noLocation() {
-    const fetchWeather = await fetch(
+  const fetchWeather = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=berlin&units=metric&appid=${API_KEY}`
   );
-    const weatherResponse = await fetchWeather.json();
+  const weatherResponse = await fetchWeather.json();
   const weatherMarkup = `
    <li class="weather-info weather news-card__item " >
    <div class="weather-information">
@@ -42,12 +40,10 @@ async function noLocation() {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a></li>`;
-return weatherMarkup;
-  }
-
+  return weatherMarkup;
+}
 
 async function widthLocation(pos) {
- 
   latitude = pos.coords.latitude;
   longitude = pos.coords.longitude;
 
@@ -82,8 +78,8 @@ async function widthLocation(pos) {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a></li>`;
-  
-if (window.matchMedia('(max-width: 767px  )').matches) {
+
+  if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 1, weatherMarkup);
   }
   if (
@@ -95,26 +91,20 @@ if (window.matchMedia('(max-width: 767px  )').matches) {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     newsAndWeatherMarkupArray.splice(2, 1, weatherMarkup);
   }
-  
- 
-  
-cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
+
+  cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
 }
 
-   navigator.geolocation.getCurrentPosition(widthLocation, noLocation);
- 
+navigator.geolocation.getCurrentPosition(widthLocation, noLocation);
 
 export default async function renderNewsAndWeather(markupsArr) {
-   if (!markupsArr.length) {
+  if (!markupsArr.length) {
     cardsContainer.innerHTML = '';
     pageNothingFound();
   }
 
-  
-   
-    
   newsAndWeatherMarkupArray.push(...markupsArr);
-   const weatherMarkup = await noLocation()
+  const weatherMarkup = await noLocation();
 
   if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 0, weatherMarkup);
@@ -128,9 +118,7 @@ export default async function renderNewsAndWeather(markupsArr) {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     newsAndWeatherMarkupArray.splice(2, 0, weatherMarkup);
   }
-cardsContainer.innerHTML = '';
-  cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
- return newsAndWeatherMarkupArray
 
- }
-    
+  cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
+  newsAndWeatherMarkupArray = [];
+}
