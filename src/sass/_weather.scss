@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 4px;
 
   &-date {
     font-size: 36px;
@@ -18,12 +19,13 @@
     padding: 10px;
     background: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
+    margin-top: 30px;
   }
 }
 
-.weather-info {
-  // margin-top: 40px;
-  // margin-bottom: 90px;
+.weather-information {
+  margin-top: 40px;
+  margin-bottom: 55px;
   display: flex;
   align-items: center;
 
@@ -57,10 +59,10 @@
   }
 }
 
-.weather-info__location>svg {
+.weather-information__location>svg {
   width: 15px;
   height: 15px;
-  color: black;
+
 }
 
 .weather>img {
