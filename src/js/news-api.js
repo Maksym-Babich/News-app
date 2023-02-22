@@ -1,13 +1,27 @@
 import { searchedNewsMarkup } from './markup';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
+const ENDPOINT = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 
 export default class NEWS_API {
   async fetchNewsByQuerry(query) {
-    const response =
-      await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${KEY}
+    if (localStorage.getItem('date')) {
+      const localStorageDate = JSON.parse(localStorage.getItem('date')).split('/')
+      const date = localStorageDate[2] + localStorageDate[1] + localStorageDate[0]
+      console.log("🚀 ~ file: news-api.js:10 ~ NEWS_API ~ fetchNewsByQuerry ~ date:", date)
+      console.log("🚀 ~ file: news-api.js:9 ~ NEWS_API ~ fetchNewsByQuerry ~ localStorageDate:", localStorageDate)
+      const response =
+        await fetch(`${ENDPOINT}?q=${query}&api-key=${KEY}&page=0&begin_date=${date}&end_date=${date}
+`);
+      const objectOfNews = await response.json();
+      const arrayOfNews = objectOfNews.response.docs;
+     
+      return arrayOfNews;
+    }
+    const response = await fetch(`${ENDPOINT}?q=${query}&api-key=${KEY}
 `);
     const objectOfNews = await response.json();
     const arrayOfNews = objectOfNews.response.docs;
+  
     return arrayOfNews;
   }
 
