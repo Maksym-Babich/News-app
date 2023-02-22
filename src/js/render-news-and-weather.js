@@ -78,21 +78,21 @@ async function widthLocation(pos) {
       <span class="weather-date">${format(new Date(), 'eee')}</span>
       <span class="weather-date">${format(new Date(), 'dd LLL y')}</span>
       <a href="https://www.accuweather.com/en" class="weather-link" target="_blank" rel="noreferrer noopener">weather for week</a></li>`;
+  return weatherMarkup;
+  //   if (window.matchMedia('(max-width: 767px  )').matches) {
+  //     newsAndWeatherMarkupArray.splice(0, 1, weatherMarkup);
+  //   }
+  //   if (
+  //     window.matchMedia('(min-width: 768px)').matches &&
+  //     window.matchMedia('(max-width: 1279px)').matches
+  //   ) {
+  //     newsAndWeatherMarkupArray.splice(1, 1, weatherMarkup);
+  //   }
+  //   if (window.matchMedia('(min-width: 1280px)').matches) {
+  //     newsAndWeatherMarkupArray.splice(2, 1, weatherMarkup);
+  //   }
 
-  if (window.matchMedia('(max-width: 767px  )').matches) {
-    newsAndWeatherMarkupArray.splice(0, 1, weatherMarkup);
-  }
-  if (
-    window.matchMedia('(min-width: 768px)').matches &&
-    window.matchMedia('(max-width: 1279px)').matches
-  ) {
-    newsAndWeatherMarkupArray.splice(1, 1, weatherMarkup);
-  }
-  if (window.matchMedia('(min-width: 1280px)').matches) {
-    newsAndWeatherMarkupArray.splice(2, 1, weatherMarkup);
-  }
-
-  cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
+  //   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
 }
 
 navigator.geolocation.getCurrentPosition(widthLocation, noLocation);
