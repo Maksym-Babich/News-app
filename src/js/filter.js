@@ -1,6 +1,5 @@
-import { popularNewsMarkup } from './markup';
-import {searchedNewsMarkup} from './markup'
-import renderNewsAndWeather from './render-news-and-weather'
+import { categoryNewsMarkup } from './markup';
+import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 export default async function getCategoryList() {
@@ -90,7 +89,7 @@ const renderMarkupFilter = (array, amount) => {
   });
   document.addEventListener('click', closeCategories);
   onClickSection();
-  onBtnFilterClick()
+  onBtnFilterClick();
 };
 
 function onClickSection() {
@@ -267,7 +266,6 @@ prevNextIcon.forEach(icon => {
 localStorage.removeItem('VALUE');
 localStorage.removeItem('date');
 
-
 async function getNewsByCategory(category) {
   try {
     const searchCategory = encodeURIComponent(category);
@@ -278,18 +276,18 @@ async function getNewsByCategory(category) {
     const response = await fetchApiByCategory.json();
     const newsByCategory = response.results;
     console.log(newsByCategory);
-    return newsByCategory;
-
-  } catch (error) { console.log(error) }
-  
-  renderNewsAndWeather(searchedNewsMarkup(newsByCategory))
+    renderNewsAndWeather(categoryNewsMarkup(newsByCategory));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function onBtnFilterClick() {
-  const btnsFilter = document.querySelectorAll('.btn')
-  btnsFilter.forEach(btnFilter => {btnFilter.addEventListener('click', event => {
-    const category = event.target.dataset.section;
-  getNewsByCategory(category)
-} )})
+  const btnsFilter = document.querySelectorAll('.btn');
+  btnsFilter.forEach(btnFilter => {
+    btnFilter.addEventListener('click', event => {
+      const category = event.target.dataset.section;
+      getNewsByCategory(category);
+    });
+  });
 }
-

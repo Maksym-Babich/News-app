@@ -44,7 +44,7 @@ const categoryNewsMarkup = newsArr => {
     const { url, published_date, section, title, abstract, multimedia } =
       newsItem;
     let urlMedia = 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg';
-    if (multimedia.length) {
+    if (multimedia !== null) {
       urlMedia = multimedia[3].url || urlMedia;
     }
     return `
