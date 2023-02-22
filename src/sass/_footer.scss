@@ -1,7 +1,22 @@
 .footer {
+<<<<<<< Updated upstream
     height: 146px;
     background-color: #7A7A7A;
     display: flex;
     justify-content: center;
     align-items: center;
+=======
+        background-color: #7A7A7A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen  and (min-width: $phone) and(max-width:$tablet) {
+        height: 120px;
+              
+       }
+       @media screen  and (min-width: $tablet) {
+        height: 146px;
+                
+       }
+>>>>>>> Stashed changes
      }
