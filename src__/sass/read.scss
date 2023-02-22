@@ -41,7 +41,6 @@
   display: flex;
   align-items: baseline;
   cursor: pointer;
-  color: inherit;
 
   &__icon {
     fill: currentColor;
@@ -73,15 +72,5 @@
   }
 }
 
-
-.search-bar {
-  visibility: hidden;
-}
-
 .read-cards-container {
 }
-
-.dark {
-  color: $dt-main-text-color;
-}
-

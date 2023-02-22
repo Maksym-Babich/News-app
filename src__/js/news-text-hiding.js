@@ -4,5 +4,4 @@ export function textHiding(text, textLength) {
     let lastSpace = newText.lastIndexOf(' ');
     return newText.substring(0, lastSpace) + '...';
   }
-  return text;
 }

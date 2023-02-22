@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="filter-container">
+    <div id="buttons-container"></div>
+
+    <p class="filter-calendar__text">Search date news</p>
+
+    <div class="calendar-form">
+      <div class="input-form" data-modal-open data-modal-close>
+        <svg class="calendar__button-calendar" width="14" height="14">
+          <use href="./images/sprite.svg#calendar"></use>
+        </svg>
+        <input
+          readonly
+          id="input-picker"
+          class="calendar-input datepicker-here"
+          placeholder="Виберіть дату..."
+        />
+        <svg class="calendar__button-arrow" width="14" height="14">
+          <use href="./images/sprite.svg#arrow-dwn"></use>
+        </svg>
+      </div>
+      <div class="calendar-modal is-hidden" data-modal>
+        <div class="calendar-modal__container">
+          <div class="calendar-switcher">
+            <p class="current-date"></p>
+            <div class="calendar-icons">
+              <span id="prev" class="material-symbols-rounded">
+                <svg class="calendar__button-arrow-icon" width="14" height="14">
+                  <use href="./images/sprite.svg#icon-prev"></use>
+                </svg>
+              </span>
+              <span id="next" class="material-symbols-rounded">
+                <svg class="calendar__button-arrow-icon" width="14" height="14">
+                  <use href="./images/sprite.svg#icon-next"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="calendar">
+            <ul class="calendar-weeks__list">
+              <li class="calendar-weeks__item">Su</li>
+              <li class="calendar-weeks__item">Mo</li>
+              <li class="calendar-weeks__item">Tu</li>
+              <li class="calendar-weeks__item">We</li>
+              <li class="calendar-weeks__item">Th</li>
+              <li class="calendar-weeks__item">Fr</li>
+              <li class="calendar-weeks__item">Sa</li>
+            </ul>
+            <ul class="days">
+              <li class="calendar-days"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

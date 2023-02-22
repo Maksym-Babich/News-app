@@ -100,9 +100,9 @@ function onClickSection() {
       button.classList.add('active');
       activeButton = button;
     });
+    // window.addEventListener('click', e => activeButton.classList.remove('active') )
   });
 }
-
 renderCategoryList();
 
 const handleResize = () => {

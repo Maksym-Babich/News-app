@@ -1,5 +1,5 @@
-import { pageNothingFound } from './markup';
 import WEATHER_API from './weather-api';
+import { searchedNewsMarkup } from './markup';
 
 const cardsContainer = document.querySelector('.news-card__list');
 const weatherApi = new WEATHER_API();
@@ -8,13 +8,8 @@ let newsAndWeatherMarkupArray = [];
 
 const weatherMarkup = weatherApi.createWeatherMarkup();
 
-export default function renderNewsAndWeather(markupsArr) {
-  if (!markupsArr.length) {
-    cardsContainer.innerHTML = '';
-    pageNothingFound();
-  }
-
-  newsAndWeatherMarkupArray.push(...markupsArr);
+export default function renderNewsAndWeather(newsArr) {
+  newsAndWeatherMarkupArray.push(searchedNewsMarkup(newsArr));
 
   if (window.matchMedia('(max-width: 767px  )').matches) {
     newsAndWeatherMarkupArray.splice(0, 0, weatherMarkup);
@@ -28,6 +23,7 @@ export default function renderNewsAndWeather(markupsArr) {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     newsAndWeatherMarkupArray.splice(2, 0, weatherMarkup);
   }
-  cardsContainer.innerHTML = '';
+
   cardsContainer.innerHTML = newsAndWeatherMarkupArray.join('');
+  console.log(newsAndWeatherMarkupArray);
 }

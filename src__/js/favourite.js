@@ -1,41 +1,7 @@
-
-// -- underline current menu item in header -- //
-import './header';
-const home = document.querySelector('#home');
-const favourite = document.querySelector('#favourite');
-const read = document.querySelector('#read');
-if (window.location.pathname.indexOf('/favourite.html') === 0) {
-    home.classList.remove('current');
-    read.classList.remove('current');
-    favourite.classList.add('current');
-} else if (window.location.pathname.indexOf('/read.html') === 0) {
-    home.classList.remove('current');
-    favourite.classList.remove('current');
-    read.classList.add('current');
-} else {
-    favourite.classList.remove('current');
-    read.classList.remove('current');
-    home.classList.add('current');
-};
-
-const checkbox = document.querySelector('.checkbox');
-const mobileCheckbox = document.querySelector('.mobile-checkbox');
-checkbox.addEventListener('change', darkMode);
-mobileCheckbox.addEventListener('change', darkMode);
-function darkMode() {
-  if (this.checked) {
-      body.classList.add('dark');
-      localStorage.setItem('dark-theme', 'dark');
-  } else {
-      body.classList.remove('dark');
-      localStorage.setItem('dark-theme', 'light');
-  }
-};
-
 import './header';
 const KEY_FAV_NEWS = 'favorite-news';
 
-const newsList = document.querySelector('.news-card__list');
+const newsList = document.querySelector('news-card__list');
 newsList.addEventListener('click', onFavoriteBtnClick);
 
 // функції для роботи з local storage
@@ -63,6 +29,7 @@ function onFavoriteBtnClick(e) {
   if (!favBtn) return;
 
   // перемикає додатковий клас
+  favBtn.classList.toggle('remove-from-fav');
 
   let currentStorageState = load(KEY_FAV_NEWS) || [];
   const card = favBtn.closest('.news-card__item');
@@ -87,29 +54,43 @@ function onFavoriteBtnClick(e) {
   };
 
   const isAlreadyInStorage = currentStorageState.some(
-    news => selectedNews.id === news.id
+    news => selectedNews.id === id
   );
 
   // перевірка чи є у сховищі
   if (!isAlreadyInStorage) {
-    currentStorageState.push(selectedNews);
+    currentStorageState.push([selectedNews]);
     save(KEY_FAV_NEWS, currentStorageState);
   }
 
-  // видаляє зі сховища
+  // видалає зі сховища
   if (favBtn.classList.contains('remove-from-fav')) {
     favBtn.textContent = 'Add to favorite';
     const updatedStorageState = currentStorageState.filter(
-      item => selectedNews.id !== item.id
+      item => selectedNews.id !== id
     );
     save(KEY_FAV_NEWS, updatedStorageState);
-  }
 
-  // додає до сховища
-  if (!favBtn.classList.contains('remove-from-fav')) {
-    favBtn.textContent = 'Remove from favorite';
+    // додає до сховища
+    if (!favBtn.classList.contains('remove-from-fav')) {
+      favBtn.textContent = 'Remove from favorite';
+      save(KEY_FAV_NEWS, [selectedNews]);
+    }
   }
-
-  favBtn.classList.toggle('remove-from-fav');
 }
 
+// рендер карток
+function renderFavorites() {
+  const favoritesContainer = document.querySelector('.favorites-list');
+
+  favoritesContainer.innerHTML = '';
+
+  const favorites = load(KEY_FAV_NEWS);
+
+  for (const favorite of favorites) {
+    const card = createNewsCard(favorite);
+    favoritesContainer.appendChild(card);
+  }
+}
+
+// написати функцію createNewsCard
