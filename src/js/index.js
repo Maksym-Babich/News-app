@@ -3,6 +3,7 @@ import './header';
 import './filter';
 import './markup';
 import './render-news-and-weather';
+import './pagination/pagination'
 
 
 import NEWS_API from './news-api';
