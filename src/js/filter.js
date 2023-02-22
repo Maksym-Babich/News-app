@@ -1,3 +1,4 @@
+import { popularNewsMarkup } from './markup';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 export default async function getCategoryList() {
@@ -262,3 +263,30 @@ prevNextIcon.forEach(icon => {
 
 localStorage.removeItem('VALUE');
 localStorage.removeItem('date');
+
+
+async function getNewsByCategory(category) {
+  try {
+    const searchCategory = encodeURIComponent(category);
+
+    const fetchApiByCategory = await fetch(
+      `https://api.nytimes.com/svc/news/v3/content/all/${searchCategory}.json?api-key=${KEY}`
+    );
+    const response = await fetchApiByCategory.json();
+    const newsByCategory = response.results;
+    return newsByCategory;
+
+  } catch (error) { console.log(error) }
+  
+  popularNewsMarkup(newsByCategory)
+}
+
+const btnFilter = document.getElementsByClassName('btn')
+
+btnFilter.addEventListener('click', event => {
+  const category = event.target.dataset.section;
+  getNewsByCategory(category)
+} )
+
+
+
