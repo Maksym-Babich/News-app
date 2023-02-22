@@ -3,16 +3,14 @@ import './header';
 import './filter';
 import './markup';
 import './render-news-and-weather';
-
+import './add-to-read';
 
 import NEWS_API from './news-api';
 import renderNewsAndWeather from './render-news-and-weather';
 import { popularNewsMarkup } from './markup';
-
+import { fetchRead } from './fetch-read';
 
 const newsApi = new NEWS_API();
-
-
 
 async function createPopularNews() {
   try {
@@ -24,8 +22,6 @@ async function createPopularNews() {
 }
 
 document.addEventListener('DOMContentLoaded', createPopularNews());
-
-
 
 import './news-text-hiding';
 import './favourite';
