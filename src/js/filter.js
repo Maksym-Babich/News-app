@@ -279,7 +279,14 @@ async function getNewsByCategory(category) {
   } catch (error) { console.log(error)}
 }
 
+const btnFilter = document.getElementsByClassName('btn')
 
+btnFilter.addEventListener('click', event => {
+  const category = event.target.dataset.section;
+  getNewsByCategory(category)
+
+
+} )
 
 
 
