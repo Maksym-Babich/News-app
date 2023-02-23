@@ -44,8 +44,12 @@
       border-radius: 20px;
       background-color: $white-color;
       border: none;
-      padding: 6px 32px 6px 12px;
+      padding: 6px 12px 6px 12px;
       display: flex;
+      align-items: center;
+      color: $main-text-color;
+      gap: 6px;
+      cursor: pointer;
     }
 
     &__btn-icon {
