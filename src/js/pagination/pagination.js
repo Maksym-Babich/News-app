@@ -105,6 +105,7 @@ document
   .addEventListener('click', function (e) {
     
     handleButton(e.target);
+    window.scrollTo(0, 0);
     // console.log('меня жмакнули')
   });
 
