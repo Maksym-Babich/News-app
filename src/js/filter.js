@@ -1,4 +1,4 @@
-import { categoryNewsMarkup } from './markup';
+import { categoryNewsMarkup, pageNothingFound } from './markup';
 import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
@@ -279,6 +279,7 @@ async function getNewsByCategory(category) {
     renderNewsAndWeather(categoryNewsMarkup(newsByCategory));
   } catch (error) {
     console.log(error);
+    pageNothingFound();
   }
 }
 
@@ -286,7 +287,14 @@ function onBtnFilterClick() {
   const btnsFilter = document.querySelectorAll('.btn');
   btnsFilter.forEach(btnFilter => {
     btnFilter.addEventListener('click', event => {
-      const category = event.target.dataset.section;
+      event.preventDefault();
+      if (
+        event.target.classList.contains('show-more') ||
+        event.target.classList.contains('show-more_btn') ||
+        event.target.classList.contains('show-more__icon')
+      )
+        return;
+      const category = event.target.textContent.toLowerCase();
       getNewsByCategory(category);
     });
   });
