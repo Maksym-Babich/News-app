@@ -31,7 +31,7 @@ const popularNewsMarkup = newsArr => {
             '-',
             '/'
           )}</span>
-          <a class="news-card__read-more" href=${url}>Read more</a>
+          <a class="news-card__read-more" href=${url} target='blank'>Read more</a>
         </div>
       </article>
     </li>
@@ -44,8 +44,8 @@ const categoryNewsMarkup = newsArr => {
     const { url, published_date, section, title, abstract, multimedia } =
       newsItem;
     let urlMedia = 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg';
-    if (multimedia.length) {
-      urlMedia = multimedia[3].url || urlMedia;
+    if (multimedia !== null) {
+      urlMedia = multimedia[2].url || urlMedia;
     }
     return `
     <li class="news-card__item">
@@ -115,7 +115,7 @@ const searchedNewsMarkup = newsArr => {
           new Date(pub_date),
           'dd/MM/yyyy'
         )}</span>
-          <a class="news-card__read-more" href=${web_url}>Read more</a>
+          <a class="news-card__read-more" href=${web_url} target='blank'>Read more</a>
         </div>
       </article>
     </li>

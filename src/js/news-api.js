@@ -21,7 +21,10 @@ export default class NEWS_API {
 `);
     const objectOfNews = await response.json();
     const arrayOfNews = objectOfNews.response.docs;
-  
+
+    const totalPages = objectOfNews.response.meta;
+    console.log(totalPages.hits)
+
     return arrayOfNews;
   }
 
