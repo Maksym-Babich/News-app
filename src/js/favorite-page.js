@@ -85,10 +85,9 @@ function createFavNewsMarkUp({
           <span class="news-card__category">${section}</span>
           <div class="news-card__btn-favorite remove-from-fav">
             <span>Remove from favorite</span>
-           <svg class=favorite__svg id="liked" viewBox="0 0 32 32" width=16 height=16>
-            <path fill="#4b48da" style="fill:var(--color6, #4b48da)"
-                d="M9.333 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987a1.316 1.316 0 0 0 1.366 0c11.484-7.06 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6S16 8 16 8s-2.985-4-6.667-4z" />
-        </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+<path d="M3.66536 0C1.8247 0 0.332031 1.47733 0.332031 3.3C0.332031 4.77133 0.915365 8.26333 6.65736 11.7933C6.76022 11.8559 6.8783 11.889 6.9987 11.889C7.1191 11.889 7.23718 11.8559 7.34003 11.7933C13.082 8.26333 13.6654 4.77133 13.6654 3.3C13.6654 1.47733 12.1727 0 10.332 0C8.49136 0 6.9987 2 6.9987 2C6.9987 2 5.50603 0 3.66536 0Z" fill="#4B48DA"/>
+</svg>
             </div>
         </div>
         <div class="news-card__text">
@@ -113,9 +112,9 @@ function onRemoveFromFavClick(e) {
   if (!removeBtn) return;
   const card = removeBtn.closest('.news-card__item');
 
-  const id = card.getAttribute('id');
+  const url = card.querySelector('.news-card__read-more').getAttribute('href');
   for (let i = 0; i < favorites.length; i += 1) {
-    if (favorites[i].id === id || favorites[i].id == null) {
+    if (favorites[i].url === url) {
       favorites.splice(i, 1);
     }
   }
