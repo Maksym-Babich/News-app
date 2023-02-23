@@ -69,7 +69,6 @@
   z-index: 999;
 }
 
-
 .show-more__categories--open::-webkit-scrollbar {
   display: none;
 }
@@ -163,17 +162,15 @@
     font-size: 18px;
     line-height: 1.38;
     color: $main-text-color;
-    margin-left: 111px;
+    margin-left: 100px;
   }
 }
-
 
 .dark .filter-calendar__text {
   color: $dt-main-text-color;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0.4, 0.2, 2);
 }
-
 
 .calendar-input.isActive::placeholder {
   transition-duration: 300ms;
@@ -200,9 +197,7 @@
 .calendar-form {
   position: relative;
 
-  @media screen and (min-width: $desktop) {
-    margin-left: 52px;
-  }
+
 }
 
 .calendar-input {
@@ -270,6 +265,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 36px;
 }
 
 .calendar__button-arrow {
