@@ -7,15 +7,34 @@ const btnPrew = document.querySelector('.btn-prev')
 
 
 
+import NEWS_API from '../news-api';
+import renderNewsAndWeather from '../render-news-and-weather';
+import { popularNewsMarkup } from '../markup';
+const newsApi = new NEWS_API();
+
 const refs = {
   pagination: document.querySelector('.pagin'),
 };
 
+
+// 
+
+// let pagesImport = 100;
+// let totalPages = Math.round(pagesImport /= 8);
+
+// console.log(totalPages);
+
+
+
+
 export let valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
-  totalPages: 10,
+  totalPages: 3,
   offset: 0,
+  perPage: 0,
+  nextPage: 8,
+  limit: 200,
 };
 
 
@@ -24,7 +43,7 @@ export let valuePage = {
 
 pagination();
 
-pg.addEventListener('click', e => {
+pg.addEventListener('click', e =>  {
   const ele = e.target;
 
   if (ele.dataset.page) {
@@ -35,9 +54,45 @@ pg.addEventListener('click', e => {
      
     handleButtonLeft();
     handleButtonRight();
+  if (e.target.dataset.page == '1') {
+
+      
+      valuePage.offset = 0;
+      valuePage.perPage = 0;
+      valuePage.nextPage = 8;
+     
+      
+    } else {
+      let currentPage = Number(e.target.dataset.page);
+      let renderPage = currentPage -= 1;
+      valuePage.offset = renderPage * 9;
+      valuePage.perPage = renderPage * 8;
+      valuePage.nextPage = valuePage.perPage + 8;
+
+    }
     
   }
-});
+ 
+}
+
+);
+
+
+
+
+  
+async function createPopularNews(perPage, nextPage) {
+  try {
+    
+    const data = await newsApi.popularNews();
+    renderNewsAndWeather(popularNewsMarkup(data.slice(perPage,nextPage)));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 
 // DYNAMIC PAGINATION
 function pagination() {
@@ -105,8 +160,7 @@ document
   .addEventListener('click', function (e) {
     
     handleButton(e.target);
-    window.scrollTo(0, 0);
-    // console.log('меня жмакнули')
+   
   });
 
 function handleButton(element) {
@@ -114,12 +168,12 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
+  
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
+   
   }
   pagination();
 }
@@ -128,27 +182,27 @@ function handleButtonLeft() {
   if (valuePage.curPage === 1) {
     
     btnPrevPg.disabled = true;
-    //  btnFirstPg.disabled = true;
+   
   } else {
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
+   
   }
 }
 function handleButtonRight() {
   
   if (valuePage.curPage === valuePage.totalPages) {
-    //  console.log(valuePage.curPage);
+   
     btnNextPg.disabled = true;
-    //  btnLastPg.disabled = true;
+    
   } else {
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
+   
   }
 }
 refs.pagination.addEventListener('click', e => {
   
   const ele = e.target;
-  // console.log(ele)
+
    if (
     (e.target.classList.contains('next-page') ||
      e.target.classList.contains('btn-next'))&&
@@ -156,7 +210,9 @@ refs.pagination.addEventListener('click', e => {
      
   ) {
      valuePage.curPage += 1;
-     valuePage.offset += 10;
+     valuePage.offset += 8;
+     valuePage.perPage += 8;
+    valuePage.nextPage += 8;
      
   }
   if (
@@ -165,7 +221,13 @@ refs.pagination.addEventListener('click', e => {
     (valuePage.curPage !== 1)
   ) {
     valuePage.curPage -= 1
-    valuePage.offset -= 10;
+    valuePage.offset -= 8;
+    valuePage.perPage -= 8;
+    valuePage.nextPage -= 8;
   }
-  // console.log(valuePage.offset)
+
+  
+  createPopularNews(valuePage.perPage, valuePage.nextPage);
+  window.scrollTo(0, 0);
+  
 })
