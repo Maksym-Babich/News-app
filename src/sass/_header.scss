@@ -118,7 +118,8 @@
     flex-direction: column;
     position: fixed;
     height: 100%;
-    width: 480px;
+    max-width: 480px;
+    width: 100%;
     top: 0;
     right: 50%;
     transform: translate(50%);
