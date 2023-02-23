@@ -1,3 +1,5 @@
+import { categoryNewsMarkup } from './markup';
+import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
 export default async function getCategoryList() {
@@ -87,6 +89,7 @@ const renderMarkupFilter = (array, amount) => {
   });
   document.addEventListener('click', closeCategories);
   onClickSection();
+  onBtnFilterClick();
 };
 
 function onClickSection() {
@@ -262,3 +265,29 @@ prevNextIcon.forEach(icon => {
 
 localStorage.removeItem('VALUE');
 localStorage.removeItem('date');
+
+async function getNewsByCategory(category) {
+  try {
+    const searchCategory = encodeURIComponent(category);
+
+    const fetchApiByCategory = await fetch(
+      `https://api.nytimes.com/svc/news/v3/content/all/${searchCategory}.json?api-key=${KEY}`
+    );
+    const response = await fetchApiByCategory.json();
+    const newsByCategory = response.results;
+    console.log(newsByCategory);
+    renderNewsAndWeather(categoryNewsMarkup(newsByCategory));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function onBtnFilterClick() {
+  const btnsFilter = document.querySelectorAll('.btn');
+  btnsFilter.forEach(btnFilter => {
+    btnFilter.addEventListener('click', event => {
+      const category = event.target.dataset.section;
+      getNewsByCategory(category);
+    });
+  });
+}

@@ -31,7 +31,45 @@ const popularNewsMarkup = newsArr => {
             '-',
             '/'
           )}</span>
-          <a class="news-card__read-more" href=${url}>Read more</a>
+          <a class="news-card__read-more" href=${url} target='blank'>Read more</a>
+        </div>
+      </article>
+    </li>
+    `;
+  });
+  return markup;
+};
+const categoryNewsMarkup = newsArr => {
+  const markup = newsArr.map(newsItem => {
+    const { url, published_date, section, title, abstract, multimedia } =
+      newsItem;
+    let urlMedia = 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg';
+    if (multimedia !== null) {
+      urlMedia = multimedia[2].url || urlMedia;
+    }
+    return `
+    <li class="news-card__item">
+      <article class="news-card__article">
+        <div class="news-card__img-wrapper">
+          <img class="news-card__img" src=${urlMedia} alt="news image" />
+          <span class="news-card__category">${section}</span>
+          <div class="news-card__btn-favorite">
+            <span>Add to favorite</span>
+            <svg class="news-card__btn-icon">
+                <use href="./images/sprite.svg#heart"></use>
+             </svg>
+            </div>
+        </div>
+        <div class="news-card__text">
+          <h2 class="news-card__title">${textHiding(title, 60)}</h2>
+          <p class="news-card__description">${textHiding(abstract, 150)}</p>
+        </div>
+        <div class="news-card__info">
+          <span class="news-card__date">${format(
+            new Date(published_date),
+            'dd/MM/yyyy'
+          )}</span>
+          <a class="news-card__read-more" target="_blank" href=${url}>Read more</a>
         </div>
       </article>
     </li>
@@ -77,7 +115,7 @@ const searchedNewsMarkup = newsArr => {
           new Date(pub_date),
           'dd/MM/yyyy'
         )}</span>
-          <a class="news-card__read-more" href=${web_url}>Read more</a>
+          <a class="news-card__read-more" href=${web_url} target='blank'>Read more</a>
         </div>
       </article>
     </li>
@@ -87,7 +125,7 @@ const searchedNewsMarkup = newsArr => {
 };
 function pageNothingFound() {
   const sect = document.querySelector('.news-card');
-  sect.innerHTML = `
+  sect.innerHTML = `<div class="nothing">
    <h2 class = "nothing_title">We haven’t found news from this category</h2>
   <img
   srcset="
@@ -102,7 +140,12 @@ function pageNothingFound() {
  src="./images/image_3@2x.jpg"
  alt="Nothing found"
  class="nothing_img"
-/>`;
+/></div>`;
 }
 
-export { searchedNewsMarkup, popularNewsMarkup, pageNothingFound };
+export {
+  searchedNewsMarkup,
+  popularNewsMarkup,
+  categoryNewsMarkup,
+  pageNothingFound,
+};

@@ -1,5 +1,6 @@
+import { fetchRead } from './fetch-read';
 const KEY_ALREADY_READ = 'read-news';
-const newsLists = document.querySelectorAll('news-card__list');
+const newsLists = document.querySelectorAll('.news-card__list');
 
 const saveRead = (key, value) => {
   try {
@@ -29,7 +30,6 @@ function onReadMoreClick(e) {
 
   let currentStorageState = loadRead(KEY_ALREADY_READ) || [];
   const card = readMoreBtn.closest('.news-card__item');
-  card.classList.add('already-read');
 
   const id = card.getAttribute('id');
   const urlMedia = card.querySelector('.news-card__img').getAttribute('src');
@@ -67,20 +67,22 @@ function onReadMoreClick(e) {
     currentStorageState.push(readNews);
     saveRead(KEY_ALREADY_READ, currentStorageState);
   }
+
+  fetchRead();
 }
 
 // рендер карток
-function renderFavorites() {
-  const favoritesContainer = document.querySelector('.favorites-list');
+// function renderFavorites() {
+//   const favoritesContainer = document.querySelector('.favorites-list');
 
-  favoritesContainer.innerHTML = '';
+//   favoritesContainer.innerHTML = '';
 
-  const favorites = loadRead(KEY_ALREADY_READ);
+//   const favorites = loadRead(KEY_ALREADY_READ);
 
-  for (const favorite of favorites) {
-    const card = createNewsCard(favorite);
-    favoritesContainer.appendChild(card);
-  }
-}
+//   for (const favorite of favorites) {
+//     const card = createNewsCard(favorite);
+//     favoritesContainer.appendChild(card);
+//   }
+// }
 
 // написати функцію createNewsCard

@@ -4,7 +4,6 @@ import { searchedNewsMarkup } from './markup';
 import renderNewsAndWeather from './render-news-and-weather';
 const newsApi = new NEWS_API();
 
-
 function openSearchBar() {
   searchBar.classList.add('visible');
   searchIcon.classList.add('hidden');
@@ -17,15 +16,13 @@ function closeMenu() {
 }
 function darkMode() {
   if (this.checked) {
-
-      body.classList.add('dark');
-      localStorage.setItem('dark-theme', 'dark');
+    body.classList.add('dark');
+    localStorage.setItem('dark-theme', 'dark');
   } else {
-      body.classList.remove('dark');
-      localStorage.setItem('dark-theme', 'light');
-
+    body.classList.remove('dark');
+    localStorage.setItem('dark-theme', 'light');
   }
-};
+}
 const searchIcon = document.querySelector('.open-search-button');
 const searchBar = document.querySelector('.search-bar');
 const burgerMenuButton = document.querySelector('.open-menu-button');
@@ -53,6 +50,7 @@ checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
 
 
+
 if (window.location.pathname.indexOf('/favourite') === 0) {
   home.classList.remove('current');
   mobileHome.classList.remove('mobile-current');
@@ -75,6 +73,7 @@ if (window.location.pathname.indexOf('/favourite') === 0) {
   home.classList.add('current');
   mobileHome.classList.add('mobile-current');
 };
+
 if (localStorage.getItem('dark-theme') === 'dark') {
   body.classList.add('dark');
   checkbox.checked = true;
@@ -83,7 +82,9 @@ if (localStorage.getItem('dark-theme') === 'dark') {
   body.classList.remove('dark');
   checkbox.checked = false;
   mobileCheckbox.checked = false;
+
 };
+
 
 queryForm.addEventListener('submit', searchNews);
 
@@ -98,4 +99,6 @@ async function searchNews(evt) {
 
   renderNewsAndWeather(newsMarkupsArray);
 
+
 };
+
