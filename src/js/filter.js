@@ -102,12 +102,16 @@ renderCategoryList();
 
 const daysTag = document.querySelector('.days'),
   currentDate = document.querySelector('.current-date'),
-  prevNextIcon = document.querySelectorAll('.calendar-icons span');
+  currentYear = document.querySelector('.current-year'),
+  prevNextIcon = document.querySelectorAll('.calendar-icons span'),
+  prevNextIconYear = document.querySelectorAll('.calendar-icons-year span');
 
 let date = new Date(),
   currDay = date.getDate(),
   currMonth = date.getMonth(),
   currYear = date.getFullYear();
+
+console.log(prevNextIconYear);
 
 (() => {
   const refs = {
@@ -180,7 +184,8 @@ const renderCalendar = number => {
   for (let i = lastDayofMonth; i < 6; i++) {
     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
-  currentDate.innerText = `${months[currMonth]} ${currYear}`;
+  currentDate.innerText = `${months[currMonth]}`;
+  currentYear.innerText = ` ${currYear}`;
   daysTag.innerHTML = liTag;
 
   const dayChange = document.querySelector('.days');
@@ -240,6 +245,13 @@ prevNextIcon.forEach(icon => {
         elem.classList.add('active');
       }
     });
+  });
+});
+
+prevNextIconYear.forEach(icon => {
+  icon.addEventListener('click', () => {
+    currYear = icon.id === 'prev-year' ? currYear - 1 : currYear + 1;
+    renderCalendar();
   });
 });
 
