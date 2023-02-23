@@ -6,11 +6,9 @@
 
 .search-bar {
   visibility: hidden;
-
 }
 .open-search-button {
   visibility: hidden;
-
 }
 
 .favorite {
@@ -42,8 +40,4 @@
   @media screen and (min-width: 1280px) {
     gap: 30px;
   }
-}
-
-.favorite__svg {
-  margin-left: 4px;
 }

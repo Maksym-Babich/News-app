@@ -41,7 +41,6 @@ function onFavoriteBtnClick(e) {
   const abstract = card.querySelector('.news-card__description').textContent;
   const published_date = card.querySelector('.news-card__date').textContent;
   const url = card.querySelector('.news-card__read-more').getAttribute('href');
-  const icon = card.querySelector('.news-card__read-more');
 
   // об'єкт, що зберігається у сховищі
   const selectedNews = {
@@ -55,11 +54,11 @@ function onFavoriteBtnClick(e) {
   };
 
   const isAlreadyInStorage = currentStorageState.some(
-    news => selectedNews.id === news.id
+    news => selectedNews.url === news.url
   );
 
   // перевірка чи є у сховищі
-  if (!isAlreadyInStorage || selectedNews.id == null) {
+  if (!isAlreadyInStorage) {
     currentStorageState.push(selectedNews);
     save(KEY_FAV_NEWS, currentStorageState);
   }
