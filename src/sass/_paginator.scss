@@ -88,6 +88,18 @@ button.next-page {
     margin-left: 6px;
 }
 
+button.prev-page,button.next-page {
+
+    
+    &:hover , &:focus {
+        
+        background-color:$second-active-color ;
+     a {
+        color: $white-color;
+     }
+    }
+}
+
 .pagination--container button:disabled a {
     color: $main-text-color;
     font-family: Manrope;
