@@ -48,24 +48,21 @@ closeMenuButton.addEventListener('click', closeMenu);
 checkbox.addEventListener('change', darkMode);
 mobileCheckbox.addEventListener('change', darkMode);
 
-console.log(window.location.pathname.indexOf('/favourite'));
-console.log(window.location.pathname.indexOf('/read'));
-
-if (window.location.pathname.indexOf('/favourite') === 0) {
+if (window.location.pathname.indexOf('/favourite') > 0) {
   home.classList.remove('current');
   mobileHome.classList.remove('mobile-current');
   read.classList.remove('current');
   mobileRead.classList.remove('mobile-current');
   favourite.classList.add('current');
   mobileFavourite.classList.add('mobile-current');
-} else if (window.location.pathname.indexOf('/read') === 0) {
+} else if (window.location.pathname.indexOf('/read') > 0) {
   home.classList.remove('current');
   mobileHome.classList.remove('mobile-current');
   favourite.classList.remove('current');
   mobileFavourite.classList.remove('mobile-current');
   read.classList.add('current');
   mobileRead.classList.add('mobile-current');
-} else if (window.location.pathname.indexOf('/index') === 0) {
+} else if (window.location.pathname.indexOf('/index') > 0) {
   favourite.classList.remove('current');
   mobileFavourite.classList.remove('mobile-current');
   read.classList.remove('current');
