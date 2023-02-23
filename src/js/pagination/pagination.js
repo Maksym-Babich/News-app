@@ -5,18 +5,26 @@ const newsList = document.querySelector('.list-news');
 const btnNext = document.querySelector('.btn-next');
 const btnPrew = document.querySelector('.btn-prev')
 
+const currentPage = document.querySelector('.pg-item');
 
 
 const refs = {
   pagination: document.querySelector('.pagin'),
 };
 
-export let valuePage = {
+
+// сюда прилетает hits c API
+let totalPages = 13;
+
+// отсюда забрать offset для fetch
+export const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
-  totalPages: 10,
+  totalPages: totalPages,
   offset: 0,
 };
+
+
 
 
 
@@ -32,11 +40,25 @@ pg.addEventListener('click', e => {
 
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-     
+      
     handleButtonLeft();
     handleButtonRight();
     
+    if (e.target.dataset.page == '1') {
+
+      
+      valuePage.offset = 0;
+     
+      
+    } else {
+      let currentPage = Number(e.target.dataset.page);
+      let renderPage = currentPage -= 1;
+      valuePage.offset = renderPage *= 9;
+    }
+    
+    
   }
+ 
 });
 
 // DYNAMIC PAGINATION
@@ -82,6 +104,7 @@ function pagination() {
     } else {
       // not truncate
       render += renderPage(pos, active);
+      
     }
   }
 
@@ -95,17 +118,21 @@ function pagination() {
 }
 
 function renderPage(index, active = '') {
+  
   return ` <li class="pg-item ${active}" data-page="${index}">
         <a class="pg-link" href="#">${index}</a>
     </li>`;
+  
+  
 }
+
 
 document
   .querySelector('.pagination--container')
   .addEventListener('click', function (e) {
     
     handleButton(e.target);
-    // console.log('меня жмакнули')
+   
   });
 
 function handleButton(element) {
@@ -113,12 +140,12 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
+   
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
+    
   }
   pagination();
 }
@@ -127,35 +154,35 @@ function handleButtonLeft() {
   if (valuePage.curPage === 1) {
     
     btnPrevPg.disabled = true;
-    //  btnFirstPg.disabled = true;
+   
   } else {
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
+    
   }
 }
 function handleButtonRight() {
   
   if (valuePage.curPage === valuePage.totalPages) {
-    //  console.log(valuePage.curPage);
+    
     btnNextPg.disabled = true;
-    //  btnLastPg.disabled = true;
+   
   } else {
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
+    
   }
 }
 refs.pagination.addEventListener('click', e => {
   
   const ele = e.target;
-  // console.log(ele)
+  
    if (
     (e.target.classList.contains('next-page') ||
      e.target.classList.contains('btn-next'))&&
     (valuePage.curPage  !== valuePage.totalPages)
      
-  ) {
+   ) {
      valuePage.curPage += 1;
-     valuePage.offset += 10;
+     valuePage.offset += 9;
      
   }
   if (
@@ -163,8 +190,11 @@ refs.pagination.addEventListener('click', e => {
       e.target.classList.contains('btn-prev')) && 
     (valuePage.curPage !== 1)
   ) {
-    valuePage.curPage -= 1
-    valuePage.offset -= 10;
+    valuePage.curPage -= 1;
+    valuePage.offset -= 9;
   }
-  // console.log(valuePage.offset)
-})
+  
+
+}
+)
+
