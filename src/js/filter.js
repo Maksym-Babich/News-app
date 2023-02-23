@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import { categoryNewsMarkup, pageNothingFound } from './markup';
 import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
@@ -12,6 +13,8 @@ export default async function getCategoryList() {
 }
 
 async function renderCategoryList() {
+  const btnContainer = document.getElementById('buttons-container')
+  btnContainer.innerHTML= ""
   let buttonsQuantity = 0;
   if (window.innerWidth < 768) {
     getCategoryList().then(categoryList => {
@@ -107,6 +110,8 @@ function onClickSection() {
 }
 
 renderCategoryList();
+
+window.addEventListener('resize', debounce(renderCategoryList, 300))
 
 const handleResize = () => {
   let nameBtn = document.querySelector('.show-more_btn');
