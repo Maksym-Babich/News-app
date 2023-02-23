@@ -1,10 +1,16 @@
-@media screen and (min-width: $phone) {
+@media screen and (min-width: 320px) {
     .nothing{
+        display: none;
+    }
+    .none{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        
+    }
+}
+@media screen and (min-width: $phone) {
+    .nothing{
         &_title{
             font-family: 'Manrope';
             font-weight: 700;
@@ -21,12 +27,17 @@
             height: 198px;
         }
     }
+    .none{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 @media screen and (min-width: $tablet) {
     .nothing{
         &_title{
             margin-bottom: 40px;
-            margin-top: 40px;
             width: 548px;
             font-size: 40px;
         }
@@ -35,16 +46,25 @@
             height: 444px;
         }
     }
+    .none{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 @media screen and (min-width: $desktop) {
     .nothing{
-        &_title{
-            margin-top: 61px;
-        }
         &_img{
             width: 601px;
             height: 478px;
         }
+    }
+    .none{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
