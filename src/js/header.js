@@ -34,7 +34,6 @@ const body = document.querySelector('body');
 
 const home = document.querySelector('#home');
 const mobileHome = document.querySelector('#mobile-home');
-console.log(mobileHome);
 const favourite = document.querySelector('#favourite');
 const mobileFavourite = document.querySelector('#mobile-favourite');
 const read = document.querySelector('#read');
