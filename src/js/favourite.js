@@ -1,6 +1,6 @@
+import { activeHeartSvg, heartSvg } from './markup';
 
 export const KEY_FAV_NEWS = 'favorite-news';
-
 
 const newsList = document.querySelector('.news-card__list');
 newsList.addEventListener('click', onFavoriteBtnClick);
@@ -41,6 +41,7 @@ function onFavoriteBtnClick(e) {
   const abstract = card.querySelector('.news-card__description').textContent;
   const published_date = card.querySelector('.news-card__date').textContent;
   const url = card.querySelector('.news-card__read-more').getAttribute('href');
+  const icon = card.querySelector('.news-card__read-more');
 
   // об'єкт, що зберігається у сховищі
   const selectedNews = {
@@ -65,7 +66,7 @@ function onFavoriteBtnClick(e) {
 
   // видаляє зі сховища
   if (favBtn.classList.contains('remove-from-fav')) {
-    favBtn.textContent = 'Add to favorite';
+    favBtn.innerHTML = `<span>Add to favorite</span>${heartSvg}`;
     const updatedStorageState = currentStorageState.filter(
       item => selectedNews.url !== item.url
     );
@@ -74,7 +75,7 @@ function onFavoriteBtnClick(e) {
 
   // додає до сховища
   if (!favBtn.classList.contains('remove-from-fav')) {
-    favBtn.textContent = 'Remove from favorite';
+    favBtn.innerHTML = `<span>Remove from favorite</span>${activeHeartSvg}`;
   }
 
   favBtn.classList.toggle('remove-from-fav');
