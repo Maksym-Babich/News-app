@@ -4,14 +4,13 @@
 @import './card';
 @import './footer';
 
-
-
-
 .search-bar {
   visibility: hidden;
+
 }
 .open-search-button {
   visibility: hidden;
+
 }
 
 .favorite {
@@ -24,3 +23,27 @@
   }
 }
 
+.card__favorite {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 28px;
+  }
+}
+
+.favorite__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 30px;
+  }
+}
+
+.favorite__svg {
+  margin-left: 4px;
+}

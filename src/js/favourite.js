@@ -1,47 +1,12 @@
-// -- underline current menu item in header -- //
-import './header';
-const home = document.querySelector('#home');
-const favourite = document.querySelector('#favourite');
-const read = document.querySelector('#read');
 
-if (window.location.pathname.indexOf('/favourite') === 0) {
-    home.classList.remove('current');
-    read.classList.remove('current');
-    favourite.classList.add('current');
-} else if (window.location.pathname.indexOf('/read') === 0) {
-    home.classList.remove('current');
-    favourite.classList.remove('current');
-    read.classList.add('current');
+export const KEY_FAV_NEWS = 'favorite-news';
 
-} else {
-  favourite.classList.remove('current');
-  read.classList.remove('current');
-  home.classList.add('current');
-}
-
-const checkbox = document.querySelector('.checkbox');
-const mobileCheckbox = document.querySelector('.mobile-checkbox');
-const body = document.querySelector('body');
-checkbox.addEventListener('change', darkMode);
-mobileCheckbox.addEventListener('change', darkMode);
-function darkMode() {
-  if (this.checked) {
-    body.classList.add('dark');
-    localStorage.setItem('dark-theme', 'dark');
-  } else {
-    body.classList.remove('dark');
-    localStorage.setItem('dark-theme', 'light');
-  }
-}
-
-import './header';
-const KEY_FAV_NEWS = 'favorite-news';
 
 const newsList = document.querySelector('.news-card__list');
 newsList.addEventListener('click', onFavoriteBtnClick);
 
 // функції для роботи з local storage
-const save = (key, value) => {
+export const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -50,7 +15,7 @@ const save = (key, value) => {
   }
 };
 
-const load = key => {
+export const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -93,7 +58,7 @@ function onFavoriteBtnClick(e) {
   );
 
   // перевірка чи є у сховищі
-  if (!isAlreadyInStorage) {
+  if (!isAlreadyInStorage || selectedNews.id == null) {
     currentStorageState.push(selectedNews);
     save(KEY_FAV_NEWS, currentStorageState);
   }
@@ -102,7 +67,7 @@ function onFavoriteBtnClick(e) {
   if (favBtn.classList.contains('remove-from-fav')) {
     favBtn.textContent = 'Add to favorite';
     const updatedStorageState = currentStorageState.filter(
-      item => selectedNews.id !== item.id
+      item => selectedNews.url !== item.url
     );
     save(KEY_FAV_NEWS, updatedStorageState);
   }
