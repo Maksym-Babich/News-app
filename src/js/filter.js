@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { categoryNewsMarkup, pageNothingFound } from './markup';
+import { categoryNewsMarkup, nothingFound } from './markup';
 import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
@@ -333,7 +333,7 @@ async function getNewsByCategory(category,perPage,nextPage) {
 
   } catch (error) {
     console.log(error);
-    pageNothingFound();
+    nothingFound();
   }
 }
 
