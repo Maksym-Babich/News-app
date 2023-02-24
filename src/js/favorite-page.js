@@ -2,6 +2,7 @@
 import './header';
 import { textHiding } from './news-text-hiding';
 import { pageNothingFound } from './markup';
+import { checkReadStorage, alreadyReadMarkup } from './markup';
 import {
   checkMark,
   alreadyReadMarkup,
@@ -117,6 +118,7 @@ function createFavNewsMarkUp({
           <a class="news-card__read-more" href=${url}>Read more</a>
         </div>
       </article>
+       ${checkReadStorage(url) ? alreadyReadMarkup : ''}
     </li>
     `;
 }
