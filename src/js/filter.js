@@ -549,7 +549,7 @@ refs.pagination.addEventListener('click', e => {
     valuePageCat.nextPage -= 8;
     window.scrollTo(0, 0);
   }
-
+window.scrollTo(0, 0);
   getNewsByCategory(load(KEY_CATEGORIES),valuePageCat.perPage,valuePageCat.nextPage)
-  console.log(valuePageCat)
+  
 })

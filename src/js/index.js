@@ -6,8 +6,7 @@ import './render-news-and-weather';
 import './add-to-read';
 
 import './pagination/pagination';
-// import './pagination/paginator-cat';
-// import './pagination/paginator-serch';
+
 
 
 import NEWS_API from './news-api';
@@ -26,7 +25,8 @@ async function createPopularNews(perPage, nextPage) {
     
     const data = await newsApi.popularNews();
     if (paginPop.classList.contains('pagination-hidden')) {
-      paginPop.classList.toggle('pagination-hidden')};
+      paginPop.classList.toggle('pagination-hidden')
+    };
           
     renderNewsAndWeather(popularNewsMarkup(data.slice(perPage, nextPage)));
     

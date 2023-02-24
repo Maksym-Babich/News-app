@@ -75,7 +75,8 @@ pg.addEventListener('click', e =>  {
       let renderPage = currentPage -= 1;
       valuePageCat.offset = renderPage * 9;
       valuePageCat.perPage = renderPage * 8;
-      valuePageCat.nextPage = valuePageCat.perPage + 8;
+    valuePageCat.nextPage = valuePageCat.perPage + 8;
+    
 
     }
     
@@ -212,7 +213,7 @@ refs.pagination.addEventListener('click', e => {
      valuePageCat.offset += 8;
      valuePageCat.perPage += 8;
     valuePageCat.nextPage += 8;
-    window.scrollTo(0, 0);
+    
      
   }
   if (
@@ -223,7 +224,7 @@ refs.pagination.addEventListener('click', e => {
     valuePageCat.offset -= 8;
     valuePageCat.perPage -= 8;
     valuePageCat.nextPage -= 8;
-    window.scrollTo(0, 0);
+    
   }
 
   
