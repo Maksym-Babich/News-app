@@ -1,4 +1,4 @@
-.page-container-search {
+.pagination-container-search {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -24,7 +24,7 @@
     }
 }
 
-.pagin-search {
+.pagin_search {
     display: flex;
     justify-content: center;
     height: 28px;
@@ -37,7 +37,7 @@
 
 }
 
-.page-container-search a {
+.pagination-container-search a {
     padding: 4px 12px;
     font-family: Manrope;
     font-size: 14px;
@@ -57,7 +57,7 @@
     border-radius: 2px;
 }
 
-.page-container-search button {
+.pagination-container-search button {
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -115,7 +115,7 @@ button.prev-page-search {
     }
 }
 
-.page-container-search button:disabled a {
+.pagination-container-search button:disabled a {
 
     font-family: Manrope;
     font-size: 14px;
@@ -168,67 +168,58 @@ button.prev-page-search {
     background-color: $second-active-color;
 }
 
-.settings {
+.settings-search {
     padding-top: 3rem;
     display: flex;
     align-items: flex-start;
 }
 
-.settings .form-input {
+.settings-search .form-input {
     margin-bottom: 1rem;
 }
 
-.settings .form-input:not(:last-child) {
-    margin-right: 10px;
+.settings-search .form-input:not(:last-child) {
+    margin-right: 3rem;
 }
 
-.settings .form-input>label {
+.settings-search .form-input>label {
     margin-bottom: 10px;
 }
 
-.settings .form-input label {
-    font-family: Manrope;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
+.settings-search .form-input label {
+    font-size: 18px;
+    font-weight: 600;
     display: block;
 }
 
-.settings .form-input>input {
+.settings-search .form-input>input {
     width: 100%;
 }
 
-.settings .form-input input {
+.settings-search .form-input input {
     font-size: 18px;
     outline: none;
     padding: 10px 17px;
+    border-radius: 5px;
     border: 1px solid #b6b6b6;
 }
 
-.settings .wrapper-form-check {
+.settings-search .wrapper-form-check {
     display: flex;
 }
 
-.settings .wrapper-form-check .form-check {
+.settings-search .wrapper-form-check .form-check {
     display: flex;
     line-height: 1;
     align-items: center;
 }
 
-.settings .wrapper-form-check .form-check:not(:last-child) {
+.settings-search .wrapper-form-check .form-check:not(:last-child) {
     margin-right: 10px;
 }
 
-.settings .wrapper-form-check label {
+.settings-search .wrapper-form-check label {
     margin-left: 10px;
-}
-
-@media (max-width: 992px) {
-    .settings {
-        flex-direction: column;
-    }
 }
 
 .s_prew-search {
