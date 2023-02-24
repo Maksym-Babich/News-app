@@ -290,7 +290,6 @@ async function getNewsByCategory(category) {
     );
     const response = await fetchApiByCategory.json();
     const newsByCategory = response.results;
-    console.log(newsByCategory);
     renderNewsAndWeather(categoryNewsMarkup(newsByCategory));
   } catch (error) {
     console.log(error);
