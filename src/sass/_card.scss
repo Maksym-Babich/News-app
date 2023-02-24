@@ -1,4 +1,7 @@
 @media screen and (min-width: 320px) {
+  .none{
+    display: none;
+  }
   .news-card {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -89,6 +92,9 @@
 }
 
 @media screen and (min-width: $tablet) {
+  .none{
+    display: none;
+  }
   .news-card {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -120,6 +126,9 @@
 }
 
 @media screen and (min-width: $desktop) {
+  .none{
+    display: none;
+  }
   .news-card {
     padding-top: 60px;
     padding-bottom: 60px;

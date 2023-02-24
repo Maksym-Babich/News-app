@@ -168,19 +168,27 @@ const searchedNewsMarkup = newsArr => {
 };
 function pageNothingFound() {
   const nothing = document.querySelector('.nothing');
-  nothing.classList = 'none';
+  const card = document.querySelector('.news-card__list');
+  card.classList.add("none");
+  nothing.classList.add('not-none');
 }
 function removePageNothingFound() {
   const nothing = document.querySelector('.nothing');
-  nothing.classList.remove('none');
+  const card = document.querySelector('.news-card__list');
+  card.classList.remove("none");
+  nothing.classList.remove("not-none");
 }
-
+function nothingFound() {
+  const nothing = document.querySelector('.nothing');
+  nothing.classList.add('not-none');
+}
 export {
   searchedNewsMarkup,
   popularNewsMarkup,
   categoryNewsMarkup,
   pageNothingFound,
   removePageNothingFound,
+  nothingFound,
   heartSvg,
   activeHeartSvg,
   checkFavoriteStorage,

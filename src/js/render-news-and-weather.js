@@ -1,4 +1,4 @@
-import { pageNothingFound } from './markup';
+import { pageNothingFound, removePageNothingFound } from './markup';
 
 import { format } from 'date-fns';
 const API_KEY = '05383c6978b3bc81d3b473e0eed83dd7';
@@ -90,8 +90,9 @@ export default async function renderNewsAndWeather(markupsArr) {
   if (!markupsArr.length) {
     cardsContainer.innerHTML = '';
     pageNothingFound();
+    return;
   }
-
+  removePageNothingFound();
   newsAndWeatherMarkupArray = [];
 
   newsAndWeatherMarkupArray.push(...markupsArr);

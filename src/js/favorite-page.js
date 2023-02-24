@@ -1,7 +1,7 @@
 // -- underline current menu item in header -- //
 import './header';
 import { textHiding } from './news-text-hiding';
-import { pageNothingFound } from './markup';
+import { nothingFound } from './markup';
 
 const home = document.querySelector('#home');
 const favourite = document.querySelector('#favourite');
@@ -97,7 +97,7 @@ const saveRemoved = (key, value) => {
 // перевірка на пустий сторедж
 const favorites = loadFav(KEY_FAV_NEWS);
 if (favorites == null || favorites.length === 0) {
-  pageNothingFound();
+  nothingFound();
   return;
 }
 
