@@ -5,11 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     
-    @media screen  and (min-width: $phone) and(max-width:$tablet) {
-        height: 120px;
+    height: 120px;
               
-       }
+      
        @media screen  and (min-width: $tablet) {
         height: 146px;
                 
