@@ -13,7 +13,7 @@ const checkMark = `<svg width="18" height="18">
          />
 </svg>`;
 
-const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
+export const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
 
 const checkFavoriteStorage = url => {
   let storageState = localStorage.getItem('favorite-news');
@@ -22,7 +22,7 @@ const checkFavoriteStorage = url => {
   }
 };
 
-const checkReadStorage = url => {
+export const checkReadStorage = url => {
   let storageState = localStorage.getItem('read-news');
   if (storageState) {
     return JSON.parse(storageState).find(item => item.url === url);
