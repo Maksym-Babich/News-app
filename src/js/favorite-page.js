@@ -34,9 +34,9 @@ function darkMode() {
   }
 }
 
-// падінг для футера
-const footer = document.querySelector('.footer');
-footer.classList.add('favorite_padding');
+// падінг для main
+const main = document.querySelector('main');
+main.classList.add('favorite_padding');
 
 const favoritesContainer = document.querySelector('.favorite__list');
 favoritesContainer.addEventListener('click', onRemoveFromFavClick);
