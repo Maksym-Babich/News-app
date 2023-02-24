@@ -1,15 +1,15 @@
-export const KEY_ALREADY_READ = 'read-news';
+const KEY_ALREADY_READ = 'read-news';
 const newsLists = document.querySelectorAll('.news-card__list');
 
-export const checkMark = `<svg width="18" height="18">
+const checkMark = `<svg width="18" height="18">
     <path
         d="M16.189 3.594a.6.6 0 0 0-.413.182L6.6 12.952 2.824 9.176a.6.6 0 1 0-.848.848l4.2 4.2a.6.6 0 0 0 .848 0l9.6-9.6a.6.6 0 0 0-.435-1.03Z"
          />
 </svg>`;
 
-export const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
+const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
 
-export const saveRead = (key, value) => {
+const saveRead = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -31,7 +31,7 @@ newsLists.forEach(list => {
   list.addEventListener('click', onReadMoreClick);
 });
 
-export function onReadMoreClick(e) {
+function onReadMoreClick(e) {
   const readMoreBtn = e.target.closest('.news-card__read-more');
   if (!readMoreBtn) return;
 
