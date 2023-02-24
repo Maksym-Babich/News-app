@@ -86,7 +86,7 @@ if (readNews) {
     </li>`;
   });
   readContainer.innerHTML = dateLists.reverse().join('');
-  cardLists = document.querySelectorAll('.news-card__list');
+  const cardLists = document.querySelectorAll('.news-card__list');
   cardLists.forEach(list => {
     for (let news of readNews) {
       if (
