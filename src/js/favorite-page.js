@@ -34,6 +34,10 @@ function darkMode() {
   }
 }
 
+// падінг для футера
+const footer = document.querySelector('.footer');
+footer.classList.add('favorite_padding');
+
 const favoritesContainer = document.querySelector('.favorite__list');
 favoritesContainer.addEventListener('click', onRemoveFromFavClick);
 
@@ -122,4 +126,8 @@ function onRemoveFromFavClick(e) {
 
   saveRemoved(KEY_FAV_NEWS, favorites);
   card.remove();
+
+  if (favorites == null || favorites.length === 0) {
+    pageNothingFound();
+  }
 }

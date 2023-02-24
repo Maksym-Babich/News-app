@@ -25,7 +25,7 @@ export const load = key => {
 };
 
 // додавання та видалення новин до storage по кліку на кнопку
-function onFavoriteBtnClick(e) {
+export function onFavoriteBtnClick(e) {
   const favBtn = e.target.closest('.news-card__btn-favorite');
   if (!favBtn) return;
 
