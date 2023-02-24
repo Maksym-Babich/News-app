@@ -1,4 +1,4 @@
-.weather {
+.news-card__list .weather {
   background-color: $second-active-color;
   display: flex;
   flex-direction: column;
@@ -46,6 +46,7 @@
   }
 
   &__location {
+    width: fit-content;
     color: $white-color;
     font-size: 20px;
     display: flex;
@@ -57,11 +58,7 @@
   }
 }
 
-.weather-information__location>svg {
-  width: 15px;
-  height: 15px;
 
-}
 
 .weather>img {
   width: 200px;

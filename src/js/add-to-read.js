@@ -1,6 +1,13 @@
-import { fetchRead } from './fetch-read';
 const KEY_ALREADY_READ = 'read-news';
 const newsLists = document.querySelectorAll('.news-card__list');
+
+const checkMark = `<svg width="18" height="18">
+    <path
+        d="M16.189 3.594a.6.6 0 0 0-.413.182L6.6 12.952 2.824 9.176a.6.6 0 1 0-.848.848l4.2 4.2a.6.6 0 0 0 .848 0l9.6-9.6a.6.6 0 0 0-.435-1.03Z"
+         />
+</svg>`;
+
+const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
 
 const saveRead = (key, value) => {
   try {
@@ -31,7 +38,6 @@ function onReadMoreClick(e) {
   let currentStorageState = loadRead(KEY_ALREADY_READ) || [];
   const card = readMoreBtn.closest('.news-card__item');
 
-  const id = card.getAttribute('id');
   const urlMedia = card.querySelector('.news-card__img').getAttribute('src');
   const section = card.querySelector('.news-card__category').textContent;
   const title = card.querySelector('.news-card__title').textContent;
@@ -48,7 +54,6 @@ function onReadMoreClick(e) {
 
   // об'єкт, що зберігається у сховищі
   const readNews = {
-    id,
     urlMedia,
     section,
     title,
@@ -59,7 +64,7 @@ function onReadMoreClick(e) {
   };
 
   const isAlreadyRead = currentStorageState.some(
-    news => readNews.id === news.id
+    news => readNews.url === news.url
   );
 
   // перевірка чи є у сховищі
@@ -68,7 +73,7 @@ function onReadMoreClick(e) {
     saveRead(KEY_ALREADY_READ, currentStorageState);
   }
 
-  fetchRead();
+  card.insertAdjacentHTML('beforeend', alreadyReadMarkup);
 }
 
 // рендер карток

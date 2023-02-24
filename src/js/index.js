@@ -4,6 +4,7 @@ import './filter';
 import './markup';
 import './render-news-and-weather';
 import './add-to-read';
+
 import './pagination/pagination';
 // import './pagination/paginator-cat';
 // import './pagination/paginator-serch';
@@ -12,8 +13,9 @@ import './pagination/pagination';
 import NEWS_API from './news-api';
 import renderNewsAndWeather from './render-news-and-weather';
 import { popularNewsMarkup } from './markup';
-import { fetchRead } from './fetch-read';
+
 const paginPop = document.querySelector('.pagination--container')
+
 
 
 const newsApi = new NEWS_API();
@@ -35,6 +37,8 @@ async function createPopularNews(perPage, nextPage) {
 }
 document.addEventListener('DOMContentLoaded', createPopularNews(0, 8));
 
+
+import './pagination/pagination';
 
 import './news-text-hiding';
 import './favourite';

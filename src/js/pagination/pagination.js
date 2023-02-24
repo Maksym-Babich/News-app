@@ -2,7 +2,9 @@ const pg = document.getElementById('pagination');
 // const btnNextPg = document.querySelector('button.next-page');
 // const btnPrew = document.querySelector('button.prev-page');
 const btnNext = document.querySelector('.btn-next');
+
 const btnPrew = document.querySelector('.btn-prev');
+
 
 
 import NEWS_API from '../news-api';
@@ -32,12 +34,13 @@ let valuePage = {
   numLinksTwoSide: 1,
   totalPages: 3,
 
-
   offset: 0,
   perPage: 0,
   nextPage: 8,
   
 };
+
+
 
 
 
@@ -53,7 +56,7 @@ pg.addEventListener('click', e =>  {
 
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-     
+      
     handleButtonLeft();
     handleButtonRight();
   if (e.target.dataset.page == '1') {
@@ -85,7 +88,7 @@ pg.addEventListener('click', e =>  {
   
 async function createPopularNews(perPage, nextPage) {
   try {
-    
+
     const data = await newsApi.popularNews();
     renderNewsAndWeather(popularNewsMarkup(data.slice(perPage,nextPage)));
   } catch (error) {
@@ -139,6 +142,7 @@ function pagination() {
     } else {
       // not truncate
       render += renderPage(pos, active);
+      
     }
   }
 
@@ -152,10 +156,14 @@ function pagination() {
 }
 
 function renderPage(index, active = '') {
+  
   return ` <li class="pg-item ${active}" data-page="${index}">
         <a class="pg-link" href="#">${index}</a>
     </li>`;
+  
+  
 }
+
 
 document
   .querySelector('.pagination--container')
@@ -169,6 +177,7 @@ function handleButton(element) {
   if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
+
     btnNext.disabled = false;
     
   
@@ -177,6 +186,7 @@ function handleButton(element) {
     handleButtonRight();
     btnPrew.disabled = false;
    
+
   }
   pagination();
 }
@@ -187,19 +197,22 @@ function handleButtonLeft() {
     btnPrew.disabled = true;
    
   } else {
+
     btnPrew.disabled = false;
-   
+
   }
 }
 function handleButtonRight() {
   
   if (valuePage.curPage === valuePage.totalPages) {
+
    
     btnNext.disabled = true;
     
   } else {
     btnNext.disabled = false;
    
+
   }
 }
 refs.pagination.addEventListener('click', e => {
@@ -211,11 +224,13 @@ refs.pagination.addEventListener('click', e => {
      ele.classList.contains('btn-next'))&&
     (valuePage.curPage  !== valuePage.totalPages)
      
-  ) {
+   ) {
      valuePage.curPage += 1;
+
      valuePage.offset += 8;
      valuePage.perPage += 8;
     valuePage.nextPage += 8;
+
      
   }
   if (
@@ -223,6 +238,7 @@ refs.pagination.addEventListener('click', e => {
       ele.classList.contains('btn-prev')) && 
     (valuePage.curPage !== 1)
   ) {
+
     valuePage.curPage -= 1
     valuePage.offset -= 8;
     valuePage.perPage -= 8;
@@ -234,3 +250,4 @@ refs.pagination.addEventListener('click', e => {
   window.scrollTo(0, 0);
   
 })
+

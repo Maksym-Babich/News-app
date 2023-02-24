@@ -1,0 +1,16 @@
+.footer {
+
+    height: 146px;
+    background-color: #7A7A7A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+              
+      
+       @media screen  and (min-width: $tablet) {
+        height: 146px;
+                
+       }
+
+     }

@@ -1,38 +1,6 @@
-// -- underline current menu item in header -- //
-import './header';
-const home = document.querySelector('#home');
-const favourite = document.querySelector('#favourite');
-const read = document.querySelector('#read');
-if (window.location.pathname.indexOf('/favourite.html') === 0) {
-  home.classList.remove('current');
-  read.classList.remove('current');
-  favourite.classList.add('current');
-} else if (window.location.pathname.indexOf('/read.html') === 0) {
-  home.classList.remove('current');
-  favourite.classList.remove('current');
-  read.classList.add('current');
-} else {
-  favourite.classList.remove('current');
-  read.classList.remove('current');
-  home.classList.add('current');
-}
+import { activeHeartSvg, heartSvg } from './markup';
 
-const checkbox = document.querySelector('.checkbox');
-const mobileCheckbox = document.querySelector('.mobile-checkbox');
-checkbox.addEventListener('change', darkMode);
-mobileCheckbox.addEventListener('change', darkMode);
-function darkMode() {
-  if (this.checked) {
-    body.classList.add('dark');
-    localStorage.setItem('dark-theme', 'dark');
-  } else {
-    body.classList.remove('dark');
-    localStorage.setItem('dark-theme', 'light');
-  }
-}
-
-import './header';
-const KEY_FAV_NEWS = 'favorite-news';
+export const KEY_FAV_NEWS = 'favorite-news';
 
 const newsList = document.querySelector('.news-card__list');
 newsList.addEventListener('click', onFavoriteBtnClick);
@@ -57,7 +25,7 @@ export const load = key => {
 };
 
 // додавання та видалення новин до storage по кліку на кнопку
-function onFavoriteBtnClick(e) {
+export function onFavoriteBtnClick(e) {
   const favBtn = e.target.closest('.news-card__btn-favorite');
   if (!favBtn) return;
 
@@ -86,7 +54,7 @@ function onFavoriteBtnClick(e) {
   };
 
   const isAlreadyInStorage = currentStorageState.some(
-    news => selectedNews.id === news.id
+    news => selectedNews.url === news.url
   );
 
   // перевірка чи є у сховищі
@@ -97,16 +65,16 @@ function onFavoriteBtnClick(e) {
 
   // видаляє зі сховища
   if (favBtn.classList.contains('remove-from-fav')) {
-    favBtn.textContent = 'Add to favorite';
+    favBtn.innerHTML = `<span>Add to favorite</span>${heartSvg}`;
     const updatedStorageState = currentStorageState.filter(
-      item => selectedNews.id !== item.id
+      item => selectedNews.url !== item.url
     );
     save(KEY_FAV_NEWS, updatedStorageState);
   }
 
   // додає до сховища
   if (!favBtn.classList.contains('remove-from-fav')) {
-    favBtn.textContent = 'Remove from favorite';
+    favBtn.innerHTML = `<span>Remove from favorite</span>${activeHeartSvg}`;
   }
 
   favBtn.classList.toggle('remove-from-fav');

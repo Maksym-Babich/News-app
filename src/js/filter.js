@@ -1,4 +1,5 @@
-import { categoryNewsMarkup } from './markup';
+import debounce from 'lodash.debounce';
+import { categoryNewsMarkup, pageNothingFound } from './markup';
 import renderNewsAndWeather from './render-news-and-weather';
 const KEY = 'A3GIIfyPWHBvfJdoXANwrFAEAGEQbzXw';
 
@@ -49,6 +50,8 @@ export default async function getCategoryList() {
 }
 
 async function renderCategoryList() {
+  const btnContainer = document.getElementById('buttons-container')
+  btnContainer.innerHTML= ""
   let buttonsQuantity = 0;
   if (window.innerWidth < 768) {
     getCategoryList().then(categoryList => {
@@ -145,6 +148,8 @@ function onClickSection() {
 
 renderCategoryList();
 
+window.addEventListener('resize', debounce(renderCategoryList, 300))
+
 const handleResize = () => {
   let nameBtn = document.querySelector('.show-more_btn');
   const windowWidth = window.innerWidth;
@@ -159,7 +164,9 @@ window.addEventListener('resize', handleResize);
 
 const daysTag = document.querySelector('.days'),
   currentDate = document.querySelector('.current-date'),
-  prevNextIcon = document.querySelectorAll('.calendar-icons span');
+  currentYear = document.querySelector('.current-year'),
+  prevNextIcon = document.querySelectorAll('.calendar-icons span'),
+  prevNextIconYear = document.querySelectorAll('.calendar-icons-year span');;
 
 let date = new Date(),
   currDay = date.getDate(),
@@ -237,7 +244,8 @@ const renderCalendar = number => {
   for (let i = lastDayofMonth; i < 6; i++) {
     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
-  currentDate.innerText = `${months[currMonth]} ${currYear}`;
+  currentDate.innerText = `${months[currMonth]}`;
+  currentYear.innerText = ` ${currYear}`;
   daysTag.innerHTML = liTag;
 
   const dayChange = document.querySelector('.days');
@@ -300,6 +308,13 @@ prevNextIcon.forEach(icon => {
   });
 });
 
+prevNextIconYear.forEach(icon => {
+  icon.addEventListener('click', () => {
+    currYear = icon.id === 'prev-year' ? currYear - 1 : currYear + 1;
+    renderCalendar();
+  });
+});
+
 localStorage.removeItem('VALUE');
 localStorage.removeItem('date');
 
@@ -312,10 +327,13 @@ async function getNewsByCategory(category,perPage,nextPage) {
     );
     const response = await fetchApiByCategory.json();
     const newsByCategory = response.results;
+
     let totalPages = newsByCategory.length / 8;
     renderNewsAndWeather(categoryNewsMarkup(newsByCategory.slice(perPage, nextPage)));
+
   } catch (error) {
     console.log(error);
+    pageNothingFound();
   }
 }
 
@@ -323,6 +341,7 @@ function onBtnFilterClick() {
   const btnsFilter = document.querySelectorAll('.btn');
   btnsFilter.forEach(btnFilter => {
     btnFilter.addEventListener('click', event => {
+
       const category = event.target.dataset.section;
 
       if (pagin.classList.contains('pagination_categories-hidden')) {
@@ -336,6 +355,7 @@ function onBtnFilterClick() {
       save(KEY_CATEGORIES, category);
       getNewsByCategory(category,valuePageCat.perPage,valuePageCat.nextPage);
      
+
     });
   });
 }

@@ -2,13 +2,14 @@
 @import './common';
 @import './header';
 @import './card';
+@import './nothing-found';
 @import './footer';
 
-
-
-
 .search-bar {
-    visibility: hidden;
+  visibility: hidden;
+}
+.open-search-button {
+  visibility: hidden;
 }
 
 .favorite {
@@ -21,3 +22,33 @@
   }
 }
 
+.card__favorite {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 28px;
+  }
+}
+
+.favorite__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 30px;
+  }
+}
+
+.favorite_padding {
+  padding-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 100px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-bottom: 300px;
+  }
+}
