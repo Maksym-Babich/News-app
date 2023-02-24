@@ -91,10 +91,11 @@ button.next-page {
 .dark button.prev-page {
   background-color: $dt-main-text-color;
 }
-
 .dark button.next-page {
     background-color: $dt-main-text-color;
 }
+
+
 
 button.prev-page,
 button.next-page {
@@ -108,6 +109,7 @@ button.next-page {
 }
 
 .pagination--container button:disabled a {
+
   color: $main-text-color;
   font-family: Manrope;
   font-size: 14px;
@@ -115,6 +117,7 @@ button.next-page {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
+
 }
 
 #pagination {

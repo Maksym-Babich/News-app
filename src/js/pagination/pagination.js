@@ -1,17 +1,18 @@
 const pg = document.getElementById('pagination');
-const btnNextPg = document.querySelector('button.next-page');
-const btnPrevPg = document.querySelector('button.prev-page');
-const newsList = document.querySelector('.list-news');
+// const btnNextPg = document.querySelector('button.next-page');
+// const btnPrew = document.querySelector('button.prev-page');
 const btnNext = document.querySelector('.btn-next');
-const btnPrew = document.querySelector('.btn-prev')
 
-const currentPage = document.querySelector('.pg-item');
+const btnPrew = document.querySelector('.btn-prev');
+
 
 
 import NEWS_API from '../news-api';
 import renderNewsAndWeather from '../render-news-and-weather';
 import { popularNewsMarkup } from '../markup';
 const newsApi = new NEWS_API();
+
+
 
 const refs = {
   pagination: document.querySelector('.pagin'),
@@ -28,7 +29,7 @@ const refs = {
 
 
 
-export let valuePage = {
+let valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
   totalPages: 3,
@@ -36,7 +37,7 @@ export let valuePage = {
   offset: 0,
   perPage: 0,
   nextPage: 8,
-  limit: 200,
+  
 };
 
 
@@ -176,12 +177,15 @@ function handleButton(element) {
   if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
-    btnNextPg.disabled = false;
 
+    btnNext.disabled = false;
+    
+  
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
-    btnPrevPg.disabled = false;
+    btnPrew.disabled = false;
+   
 
   }
   pagination();
@@ -190,10 +194,11 @@ function handleButtonLeft() {
   
   if (valuePage.curPage === 1) {
     
-    btnPrevPg.disabled = true;
+    btnPrew.disabled = true;
    
   } else {
-    btnPrevPg.disabled = false;
+
+    btnPrew.disabled = false;
 
   }
 }
@@ -202,10 +207,10 @@ function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
 
    
-    btnNextPg.disabled = true;
+    btnNext.disabled = true;
     
   } else {
-    btnNextPg.disabled = false;
+    btnNext.disabled = false;
    
 
   }
@@ -215,8 +220,8 @@ refs.pagination.addEventListener('click', e => {
   const ele = e.target;
 
    if (
-    (e.target.classList.contains('next-page') ||
-     e.target.classList.contains('btn-next'))&&
+    (ele.classList.contains('next-page') ||
+     ele.classList.contains('btn-next'))&&
     (valuePage.curPage  !== valuePage.totalPages)
      
    ) {
@@ -229,8 +234,8 @@ refs.pagination.addEventListener('click', e => {
      
   }
   if (
-    (e.target.classList.contains('prev-page') ||
-      e.target.classList.contains('btn-prev')) && 
+    (ele.classList.contains('prev-page') ||
+      ele.classList.contains('btn-prev')) && 
     (valuePage.curPage !== 1)
   ) {
 
@@ -240,7 +245,7 @@ refs.pagination.addEventListener('click', e => {
     valuePage.nextPage -= 8;
   }
 
-  
+
   createPopularNews(valuePage.perPage, valuePage.nextPage);
   window.scrollTo(0, 0);
   

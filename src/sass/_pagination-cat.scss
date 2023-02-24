@@ -28,28 +28,17 @@
     display: flex;
     justify-content: center;
     height: 28px;
-    width: 300px;
+    width: 288px;
 
     @media screen and (min-width: $tablet) {
         height: 31px;
-        width: 500px;
+        width: 415px;
     }
+
 }
 
-.page-container-categories a {
+.pagination--container--categories a {
     padding: 4px 12px;
-    font-family: Manrope;
-    font-size: 14px;
-    font-weight: 500;
-    color: $main-text-color;
-
-    .pg-link-dot {
-        padding: 1px 1px;
-    }
-}
-
-.page-container-categories a.pg-link-dot {
-    padding: 0px 0px;
     font-family: Manrope;
     font-size: 14px;
     font-weight: 500;
@@ -76,8 +65,8 @@
     border: none;
 }
 
-button.next-page-cat,
-button.prev-page-cat {
+button.prev-page-cat,
+button.next-page-cat {
     width: 72px;
     font-family: Manrope;
     font-size: 14px;
@@ -89,6 +78,8 @@ button.prev-page-cat {
     border-radius: 2px;
 }
 
+
+
 button.prev-page-cat {
     margin-right: 6px;
 }
@@ -97,8 +88,35 @@ button.next-page-cat {
     margin-left: 6px;
 }
 
+button.next-page-cat {
+
+    &:hover,
+    &:focus {
+
+        background-color: $second-active-color ;
+
+        a {
+            color: $white-color;
+        }
+    }
+}
+
+button.prev-page-cat {
+
+
+    &:hover,
+    &:focus {
+
+        background-color: $second-active-color ;
+
+        a {
+            color: $white-color;
+        }
+    }
+}
+
 .pagination--container--categories button:disabled a {
-    color: $main-text-color;
+
     font-family: Manrope;
     font-size: 14px;
     font-weight: 500;
@@ -124,7 +142,7 @@ button.next-page-cat {
 }
 
 #pagination-categories li.active a {
-    color: var(--white-color);
+    color: $white-color;
 }
 
 #pagination-categories li a {
@@ -146,10 +164,9 @@ button.next-page-cat {
 }
 
 #pagination-categories li:hover a {
-    color: var(--white-color);
+    color: $white-color;
     background-color: $second-active-color;
 }
-
 .settings-cat {
     padding-top: 3rem;
     display: flex;
@@ -222,19 +239,10 @@ button.next-page-cat {
     text-align: left;
 }
 
-/*# sourceMappingURL=style.css.map */
-
-.pagination-categories-hidden {
+.pagination_categories-hidden {
     display: none;
 }
 
-a.fas {
+a.fas-cat {
     height: 28px;
-}
-
-.pg-item-dot {
-    margin-left: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    border: 0px solid $second-active-color;
 }
