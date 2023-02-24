@@ -6,13 +6,9 @@ import './render-news-and-weather';
 
 import './add-to-read';
 
-
-
-
 import NEWS_API from './news-api';
 import renderNewsAndWeather from './render-news-and-weather';
 import { popularNewsMarkup } from './markup';
-import { fetchRead } from './fetch-read';
 
 const newsApi = new NEWS_API();
 
@@ -26,8 +22,6 @@ async function createPopularNews() {
 }
 
 document.addEventListener('DOMContentLoaded', createPopularNews());
-
-
 
 import './pagination/pagination';
 

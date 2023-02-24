@@ -2,6 +2,7 @@
 @import './common';
 @import './header';
 @import './card';
+@import './nothing-found';
 @import './footer';
 
 .read-by-date-container {
@@ -73,7 +74,6 @@
   }
 }
 
-
 .search-bar {
   visibility: hidden;
 }
@@ -87,4 +87,3 @@
 .dark {
   color: $dt-main-text-color;
 }
-
