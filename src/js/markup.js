@@ -168,9 +168,11 @@ const searchedNewsMarkup = newsArr => {
 };
 function pageNothingFound() {
   const nothing = document.querySelector('.nothing');
-  const card = document.querySelector('.news-card');
-  // card.innerHTML = '';
   nothing.classList = 'none';
+}
+function removePageNothingFound() {
+  const nothing = document.querySelector('.nothing');
+  nothing.classList.remove('none');
 }
 
 export {
@@ -178,6 +180,7 @@ export {
   popularNewsMarkup,
   categoryNewsMarkup,
   pageNothingFound,
+  removePageNothingFound,
   heartSvg,
   activeHeartSvg,
   checkFavoriteStorage,
