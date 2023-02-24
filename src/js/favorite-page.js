@@ -2,6 +2,14 @@
 import './header';
 import { textHiding } from './news-text-hiding';
 import { pageNothingFound } from './markup';
+import {
+  checkMark,
+  alreadyReadMarkup,
+  KEY_ALREADY_READ,
+  saveRead,
+  loadRead,
+  onReadMoreClick,
+} from './add-to-read';
 
 const home = document.querySelector('#home');
 const favourite = document.querySelector('#favourite');
@@ -39,9 +47,11 @@ const main = document.querySelector('main');
 main.classList.add('favorite_padding');
 
 const favoritesContainer = document.querySelector('.favorite__list');
+favoritesContainer.addEventListener('click', onReadMoreClick);
 favoritesContainer.addEventListener('click', onRemoveFromFavClick);
 
 const KEY_FAV_NEWS = 'favorite-news';
+const KEY_ALREADY_READ = 'read-news';
 
 const loadFav = key => {
   try {
