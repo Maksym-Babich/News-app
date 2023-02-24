@@ -160,7 +160,7 @@ const searchedNewsMarkup = newsArr => {
           <a class="news-card__read-more" href=${web_url} target='blank'>Read more</a>
         </div>
       </article>
-      ${checkReadStorage(url) ? alreadyReadMarkup : ''}
+      ${checkReadStorage(web_url) ? alreadyReadMarkup : ''}
     </li>
     `;
   });
