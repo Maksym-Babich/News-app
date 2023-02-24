@@ -7,9 +7,23 @@ const heartSvg = `<svg class="news-card__btn-icon xmlns="http://www.w3.org/2000/
 const activeHeartSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
 <path d="M3.66536 0C1.8247 0 0.332031 1.47733 0.332031 3.3C0.332031 4.77133 0.915365 8.26333 6.65736 11.7933C6.76022 11.8559 6.8783 11.889 6.9987 11.889C7.1191 11.889 7.23718 11.8559 7.34003 11.7933C13.082 8.26333 13.6654 4.77133 13.6654 3.3C13.6654 1.47733 12.1727 0 10.332 0C8.49136 0 6.9987 2 6.9987 2C6.9987 2 5.50603 0 3.66536 0Z" fill="#4B48DA"/>
 </svg>`;
+const checkMark = `<svg width="18" height="18">
+    <path
+        d="M16.189 3.594a.6.6 0 0 0-.413.182L6.6 12.952 2.824 9.176a.6.6 0 1 0-.848.848l4.2 4.2a.6.6 0 0 0 .848 0l9.6-9.6a.6.6 0 0 0-.435-1.03Z"
+         />
+</svg>`;
+
+const alreadyReadMarkup = `<div class='already-read'><div class='already-read__text'><span>Already read</span> ${checkMark}</div></div>`;
 
 const checkFavoriteStorage = url => {
   let storageState = localStorage.getItem('favorite-news');
+  if (storageState) {
+    return JSON.parse(storageState).find(item => item.url === url);
+  }
+};
+
+const checkReadStorage = url => {
+  let storageState = localStorage.getItem('read-news');
   if (storageState) {
     return JSON.parse(storageState).find(item => item.url === url);
   }
@@ -52,6 +66,7 @@ const popularNewsMarkup = newsArr => {
           <a class="news-card__read-more" href=${url} target='blank'>Read more</a>
         </div>
       </article>
+      ${checkReadStorage(url) ? alreadyReadMarkup : ''}
     </li>
     `;
   });
@@ -94,6 +109,7 @@ const categoryNewsMarkup = newsArr => {
           <a class="news-card__read-more" target="_blank" href=${url}>Read more</a>
         </div>
       </article>
+      ${checkReadStorage(url) ? alreadyReadMarkup : ''}
     </li>
     `;
   });
@@ -144,6 +160,7 @@ const searchedNewsMarkup = newsArr => {
           <a class="news-card__read-more" href=${web_url} target='blank'>Read more</a>
         </div>
       </article>
+      ${checkReadStorage(url) ? alreadyReadMarkup : ''}
     </li>
     `;
   });
@@ -163,4 +180,5 @@ export {
   pageNothingFound,
   heartSvg,
   activeHeartSvg,
+  checkFavoriteStorage,
 };
