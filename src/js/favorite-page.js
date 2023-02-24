@@ -139,7 +139,7 @@ function createFavNewsMarkUp({
             '-',
             '/'
           )}</span>
-          <a class="news-card__read-more" href=${url}>Read more</a>
+          <a class="news-card__read-more" href=${url} target='blank'>Read more</a>
         </div>
       </article>
         ${checkReadStorage(url) ? alreadyReadMarkup : ''}
