@@ -164,7 +164,7 @@ function onRemoveFromFavClick(e) {
   card.remove();
 
   if (favorites == null || favorites.length === 0) {
-    pageNothingFound();
+    nothingFound();
   }
 }
 
