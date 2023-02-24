@@ -6,6 +6,8 @@ body {
   background-color: $main-bg-color;
   min-width: 320px;
   color: $main-text-color;
+  transition: background-color cubic-bezier(0.4, 0.4, 0.2, 2) .6s,
+              color cubic-bezier(0.4, 0.4, 0.2, 2) .3s;
 }
 body,
 h1,

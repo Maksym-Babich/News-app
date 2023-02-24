@@ -87,6 +87,10 @@
 .current {
     border-bottom: 1px solid $active-color;
 }
+.mobile-current{
+    background-color: $second-active-color;
+    color: $dt-main-text-color;
+}
 .submit-button {
     background-color: transparent;
     border: none;
@@ -114,17 +118,23 @@
     flex-direction: column;
     position: fixed;
     height: 100%;
-    width: 480px;
+    max-width: 480px;
+    width: 100%;
     top: 0;
     right: 50%;
     transform: translate(50%);
     z-index: 2;
     background-color: $main-bg-color;
     opacity: 1;
-    transition: opacity cubic-bezier(1, 0.4, 0.2, 1) 1s;
+    transition: opacity cubic-bezier(1, 0.4, 0.2, 1) 1s, 
+                background-color cubic-bezier(0.4, 0.4, 0.2, 2) .6s, 
+                color cubic-bezier(0.4, 0.4, 0.2, 2) .3s;;
         &.hidden {
             visibility: hidden;
             opacity: 0;
+        };
+        @media screen and (min-width: $tablet) {
+            visibility: hidden;
         }
 }
 .mobile-menu-list {
@@ -244,7 +254,20 @@
         };
     }
 }
+[aria-label="Sun"] {
+    stroke: $active-color;
+    fill: $active-color;
+}
+[aria-label="Moon"] {
+    stroke: $not-active-color;
+    fill: $not-active-color;
+}
+[aria-label="Close mobile menu button"], [aria-label="Mobile menu button"]{
+    stroke: $main-text-color;
+    fill: $main-text-color;
+}
 .dark {
+    
     background-color: $dt-main-bg-color;
     color: $dt-main-text-color;
     .desktop-switcher::before {
@@ -264,4 +287,30 @@
         background-color: $dt-main-bg-color;
         color: $dt-main-text-color;
     };
+    .search-bar {
+        border-color: $dt-main-text-color;
+        .search-field{
+            color: $secondary-text-color;
+        }
+    };
+    [aria-label="Search field button"] {
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    };
+    [aria-label="Favorite"] {
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    };
+    [aria-label="Sun"] {
+        stroke: $not-active-color;
+        fill: $not-active-color;
+    };
+    [aria-label="Moon"] {
+        stroke: $active-color;
+        fill: $active-color;
+    };
+    [aria-label="Close mobile menu button"], [aria-label="Mobile menu button"]{
+        stroke: $dt-main-text-color;
+        fill: $dt-main-text-color;
+    }
 }
