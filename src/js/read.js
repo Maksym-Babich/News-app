@@ -4,7 +4,7 @@ import { loadRead } from './add-to-read';
 import './header';
 import { heartSvg, activeHeartSvg, checkFavoriteStorage } from './markup';
 import { textHiding } from './news-text-hiding';
-import { pageNothingFound } from './markup';
+import { nothingFound } from './markup';
 
 const KEY_ALREADY_READ = 'read-news';
 const arrowUpSvg = `
@@ -136,7 +136,7 @@ if (readNews) {
     }
   });
 } else {
-  pageNothingFound();
+  nothingFound();
 }
 
 // додовання у favorites
